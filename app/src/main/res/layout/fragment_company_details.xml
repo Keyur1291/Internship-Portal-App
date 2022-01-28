@@ -140,8 +140,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
-        android:backgroundTint="@color/material_dynamic_primary80"
-        android:textColor="@color/material_dynamic_primary30"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/editprofilebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
