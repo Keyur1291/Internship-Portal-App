@@ -129,7 +129,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:onClick="registerUser"
                 android:layout_marginTop="20sp"
                 android:id="@+id/regibtn"
                 android:layout_width="200sp"
