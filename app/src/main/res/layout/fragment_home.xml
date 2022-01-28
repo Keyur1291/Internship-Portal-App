@@ -87,7 +87,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="100sp"
                 android:layout_height="100sp"
-                android:background="@drawable/ic_baseline_article_24" />
+                android:background="@drawable/ic_baseline_card_membership_24" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:textAlignment="center"
