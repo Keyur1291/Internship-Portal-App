@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="black">#FF000000</color>
+    <color name="grey">#3f403f</color>
 
     <color name="md_theme_light_primary">#005BC1</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
