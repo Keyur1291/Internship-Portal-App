@@ -26,7 +26,8 @@
                 android:padding="15sp">
 
                 <com.google.android.material.textview.MaterialTextView
-                    style="@style/Widget.Material3.Button.TextButton"
+                    android:backgroundTint="@color/material_dynamic_primary80"
+                    android:textColor="@color/material_dynamic_primary30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30sp"

@@ -133,6 +133,8 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
+                    android:backgroundTint="@color/material_dynamic_primary80"
+                    android:textColor="@color/material_dynamic_primary30"
                     android:id="@+id/regibtn"
                     android:layout_width="200sp"
                     android:layout_height="64sp"
