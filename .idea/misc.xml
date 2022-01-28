@@ -25,6 +25,8 @@
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/background.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/content.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/department_item.xml" value="0.25" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_about.xml" value="0.25" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_company_details.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_edit_profile.xml" value="0.24864130434782608" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
@@ -36,9 +38,6 @@
         <entry key="..\:/InternshipPortal/app/src/main/res/menu/nav_menu_student.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/menu/navigation_menu.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14322916666666666" />
-        <entry key="..\:/Users/Jainam Shah/Desktop/sml/Internship-Portal-App/app/src/main/res/layout/activity_login.xml" value="0.2105978260869565" />
-        <entry key="..\:/Users/Jainam Shah/Desktop/sml/Internship-Portal-App/app/src/main/res/layout/activity_register.xml" value="2.4" />
-        <entry key="..\:/Users/Jainam Shah/Desktop/sml/Internship-Portal-App/app/src/main/res/layout/activity_students_list.xml" value="0.25" />
       </map>
     </option>
   </component>
