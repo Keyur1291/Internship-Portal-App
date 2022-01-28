@@ -22,11 +22,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:layout_margin="10sp"
             android:padding="25sp">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    app:boxCornerRadiusTopStart="20sp"
-                    app:boxCornerRadiusTopEnd="20sp"
+                    app:boxCornerRadiusTopStart="15sp"
+                    app:boxCornerRadiusTopEnd="15sp"
                     android:hint="Name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
@@ -61,8 +62,8 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    app:boxCornerRadiusBottomEnd="20sp"
-                    app:boxCornerRadiusBottomStart="20sp"
+                    app:boxCornerRadiusBottomEnd="15sp"
+                    app:boxCornerRadiusBottomStart="15sp"
                     android:hint="Email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
