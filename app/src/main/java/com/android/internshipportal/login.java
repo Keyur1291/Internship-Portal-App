@@ -64,7 +64,7 @@ public class login extends AppCompatActivity {
         String email = loginEmail.getEditText().getText().toString();
         String password = loginPass.getEditText().getText().toString();
 
-         if (TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(email)) {
             loginEmail.setError("Field cannot be empty");
             loginEmail.requestFocus();
         } else if (TextUtils.isEmpty(password)) {
