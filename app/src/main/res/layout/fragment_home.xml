@@ -24,12 +24,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
+                android:tint="@color/material_dynamic_primary50"
                 android:layout_width="100sp"
                 android:layout_height="100sp"
-                android:background="@drawable/ic_baseline_article_24" />
+                android:src="@drawable/ic_baseline_article_24" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:textColor="@color/material_dynamic_primary50"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Apply for internship" />
@@ -55,11 +57,13 @@
             android:orientation="vertical" >
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:tint="@color/material_dynamic_primary50"
                 android:layout_width="100sp"
                 android:layout_height="100sp"
-                android:background="@drawable/ic_baseline_domain_24" />
+                android:src="@drawable/ic_baseline_domain_24" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:textColor="@color/material_dynamic_primary50"
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,11 +89,13 @@
             android:orientation="vertical" >
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:tint="@color/material_dynamic_primary50"
                 android:layout_width="100sp"
                 android:layout_height="100sp"
-                android:background="@drawable/ic_baseline_card_membership_24" />
+                android:src="@drawable/ic_baseline_card_membership_24" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:textColor="@color/material_dynamic_primary50"
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,11 +122,13 @@
             android:orientation="vertical" >
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:tint="@color/material_dynamic_primary50"
                 android:layout_width="100sp"
                 android:layout_height="100sp"
-                android:background="@drawable/ic_baseline_person_24" />
+                android:src="@drawable/ic_baseline_person_24" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:textColor="@color/material_dynamic_primary50"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Profle" />
