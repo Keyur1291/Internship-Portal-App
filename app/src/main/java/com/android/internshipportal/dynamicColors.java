@@ -7,6 +7,6 @@ public class dynamicColors extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-       // DynamicColors.applyToActivitiesIfAvailable(this);
+        DynamicColors.applyToActivitiesIfAvailable(this);
     }
 }
