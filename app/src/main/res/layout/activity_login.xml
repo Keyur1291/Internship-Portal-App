@@ -13,7 +13,11 @@
         app:cardCornerRadius="40sp"
         app:strokeColor="@android:color/darker_gray"
         app:strokeWidth="0sp">
-        <ScrollView android:layout_height="match_parent" android:layout_width="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -23,19 +27,19 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/Widget.Material3.Button.TextButton"
-                    android:layout_marginBottom="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="30sp"
                     android:text="Login"
                     android:textSize="50sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    app:boxCornerRadiusTopStart="15sp"
-                    app:boxCornerRadiusTopEnd="15sp"
                     android:id="@+id/login_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email"
+                    app:boxCornerRadiusTopEnd="15sp"
+                    app:boxCornerRadiusTopStart="15sp"
                     app:startIconDrawable="@drawable/ic_baseline_mail_24">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -46,24 +50,24 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    app:boxCornerRadiusBottomStart="15sp"
-                    app:boxCornerRadiusBottomEnd="15sp"
                     android:id="@+id/login_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_baseline_lock_24"
                     android:hint="Password"
-                    app:passwordToggleEnabled="true">
+                    app:boxCornerRadiusBottomEnd="15sp"
+                    app:boxCornerRadiusBottomStart="15sp"
+                    app:passwordToggleEnabled="true"
+                    app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"/>
+                        android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textview.MaterialTextView
-                    style="@style/Widget.Material3.Button.TextButton"
                     android:id="@+id/forgotpassword"
+                    style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Forgot Password?"
@@ -74,8 +78,8 @@
                     android:id="@+id/login"
                     android:layout_width="200sp"
                     android:layout_height="64sp"
-                    android:textSize="30sp"
-                    android:text="login" />
+                    android:text="login"
+                    android:textSize="30sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
