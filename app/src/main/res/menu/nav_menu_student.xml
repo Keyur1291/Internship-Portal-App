@@ -2,9 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <item
-        android:id="@+id/main_item"
-        android:title="Menu">
+    <item android:title="Menu">
         <menu>
             <item
                 android:id="@+id/home"

@@ -28,7 +28,6 @@
                     app:boxCornerRadiusTopStart="20sp"
                     app:boxCornerRadiusTopEnd="20sp"
                     android:hint="Name"
-                    android:id="@+id/editname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
 
@@ -41,7 +40,6 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:hint="Department"
-                    android:id="@+id/editdept"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
 
@@ -53,7 +51,6 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:hint="Mobile no."
-                    android:id="@+id/editmobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
 
@@ -67,7 +64,6 @@
                     app:boxCornerRadiusBottomEnd="20sp"
                     app:boxCornerRadiusBottomStart="20sp"
                     android:hint="Email"
-                    android:id="@+id/editemail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
 
@@ -82,7 +78,6 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/savebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/editprofileview"
