@@ -14,11 +14,13 @@
         tools:openDrawer="end">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
             <com.google.android.material.appbar.AppBarLayout
-                android:theme="@style/Widget.Material3.AppBarLayout"
+                android:background="@color/material_dynamic_primary90"
+                android:fitsSystemWindows="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
@@ -37,7 +39,7 @@
         <include
             layout="@layout/content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
