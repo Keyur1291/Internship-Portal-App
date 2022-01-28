@@ -3,16 +3,16 @@ package com.android.internshipportal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
-import com.google.android.material.textview.MaterialTextView;
+import com.google.errorprone.annotations.RequiredModifiers;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
@@ -20,14 +20,17 @@ import java.util.Objects;
 
 public class login extends AppCompatActivity {
 
-    MaterialButton logBtn;
-    MaterialTextView regLink, forgotPass;
+    Button logBtn;
+    TextView regLink;
+    TextView forgotPass;
     TextInputLayout loginEmail, loginPass;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         CharSequence textFieldError=this.getResources().getString(R.string.field_empty_error);
@@ -36,7 +39,13 @@ public class login extends AppCompatActivity {
         loginEmail = findViewById(R.id.login_email);
         loginPass = findViewById(R.id.login_pass);
         logBtn =  findViewById(R.id.login);
-        logBtn.setOnClickListener(View -> loginUser(textFieldError));
+        logBtn.setOnClickListener(View -> {
+            try{
+                loginUser(textFieldError);
+            }catch (Exception e){
+                Toast.makeText(this,R.string.login_error +" "+e,Toast.LENGTH_SHORT).show();
+            }
+        });
 
         regLink = findViewById(R.id.regilink);
         regLink.setOnClickListener(v -> {
@@ -51,34 +60,6 @@ public class login extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
-            DocumentReference df = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-            df.get().addOnSuccessListener(documentSnapshot -> {
-                if (documentSnapshot.getString("isAdmin") != null) {
-                    startActivity(new Intent(getApplicationContext(),admin_home.class));
-                    finish();
-                }
-
-                if (documentSnapshot.getString("isStudent") != null) {
-                    startActivity(new Intent(getApplicationContext(),student_home.class));
-                    finish();
-                }
-
-                if (documentSnapshot.getString("isFaculty") != null) {
-                    startActivity(new Intent(getApplicationContext(),faculty_home.class));
-                    finish();
-                }
-            }).addOnFailureListener(e -> {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(), login.class));
-                finish();
-            });
-        }
-    }
-
     private void loginUser(CharSequence textFieldError) {
         String email = Objects.requireNonNull(loginEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(loginPass.getEditText()).getText().toString();
@@ -91,28 +72,15 @@ public class login extends AppCompatActivity {
             loginPass.requestFocus();
         } else {
 
-            mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {
-                Toast.makeText(login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                userAccessLevel(Objects.requireNonNull(authResult.getUser()).getUid());
-            }).addOnFailureListener(e -> Toast.makeText(login.this, e.getMessage(), Toast.LENGTH_SHORT).show());
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+                if(task.isSuccessful()) {
+                    Toast.makeText(login.this, R.string.user_logged_in, Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(login.this, navigation_drawer.class));
+                } else {
+                    Toast.makeText(login.this, R.string.login_error + Objects.requireNonNull(task.getException()).getMessage() , Toast.LENGTH_SHORT).show();
+                }
+            });
         }
-    }
-
-    private void userAccessLevel(String uid) {
-        DocumentReference documentReference = fStore.collection("Users").document(uid);
-        documentReference.get().addOnSuccessListener(documentSnapshot -> {
-
-            if (documentSnapshot.getString("isFaculty") != null) {
-                startActivity(new Intent(getApplicationContext(),faculty_home.class));
-                finish();
-            } else if (documentSnapshot.getString("isAdmin") != null) {
-                startActivity(new Intent(getApplicationContext(),admin_home.class));
-                finish();
-            } else if (documentSnapshot.getString("isStudent") != null) {
-                startActivity(new Intent(getApplicationContext(),student_home.class));
-                finish();
-            }
-        });
     }
 
 }

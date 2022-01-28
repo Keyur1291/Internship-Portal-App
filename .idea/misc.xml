@@ -3,78 +3,46 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/InternshipPortal/app/src/main/res/drawable-v24/ic_launcher_monochrome.xml" value="0.1555" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/background.xml" value="0.26205128205128203" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/background_round_padded.xml" value="0.26614583333333336" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/borders.xml" value="0.26614583333333336" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/button.xml" value="0.26614583333333336" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/drawable/ic_baseline_card_membership_24.xml" value="0.1895" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/ic_baseline_domain_24.xml" value="0.26205128205128203" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.26614583333333336" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.26614583333333336" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.26614583333333336" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1895" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/menu_background_color_state.xml" value="0.26614583333333336" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_add_company.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_add_faculty.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_add_student.xml" value="0.176" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_admin_home.xml" value="0.264" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_company_details.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_company_list.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_edit_faculty.xml" value="0.1935897435897436" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_edit_profile.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_edit_student.xml" value="0.20512820512820512" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_admin_home.xml" value="0.24864130434782608" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_faculty_home.xml" value="0.24864130434782608" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_faculty_list.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_home.xml" value="0.2" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_internship_form.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.2" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_noc_requests.xml" value="0.20512820512820512" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_profile.xml" value="0.25" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_register.xml" value="0.264" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_register_faculty.xml" value="0.2" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_student_home.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_students_list.xml" value="0.2" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_upload_noc.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_user_control.xml" value="0.20512820512820512" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_students_list.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/background.xml" value="0.25" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/company_list_item.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/content.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/department_item.xml" value="0.25" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/faculty_list_item.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_about.xml" value="0.25" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_company_details.xml" value="0.25" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_completion_certi.xml" value="0.176" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_edit_profile.xml" value="0.24864130434782608" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_internship.xml" value="0.264" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_internshipform.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_main_faculty.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_main_student.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_noc_letter.xml" value="0.2" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_profileview.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/header_layout.xml" value="0.264" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/list_item.xml" value="0.25" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/noc_list_item.xml" value="0.20512820512820512" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/students_list_item.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/tool_bar.xml" value="0.25" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/menu/bottom_nav.xml" value="0.20253164556962025" />
         <entry key="..\:/InternshipPortal/app/src/main/res/menu/nav_menu.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/menu/nav_menu_faculty.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/menu/nav_menu_student.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/menu/navigation_menu.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14322916666666666" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1555" />
-        <entry key="..\:/Users/Jainam Shah/Desktop/sml/Internship-Portal-App/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.10989583333333333" />
-        <entry key="..\:/Users/Jainam Shah/Desktop/sml/Internship-Portal-App/app/src/main/res/layout/fragment_home.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/Jainam Shah/Desktop/sml/Internship-Portal-App/app/src/main/res/layout/activity_login.xml" value="0.2105978260869565" />
+        <entry key="..\:/Users/Jainam Shah/Desktop/sml/Internship-Portal-App/app/src/main/res/layout/activity_register.xml" value="2.4" />
+        <entry key="..\:/Users/Jainam Shah/Desktop/sml/Internship-Portal-App/app/src/main/res/layout/activity_students_list.xml" value="0.25" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
