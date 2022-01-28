@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.internshipportal">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".dynamicColors"
+        android:name=".internshipPortal"
         android:allowBackup="true"
         android:fullBackupOnly="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,70 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InternshipPortal">
         <activity
-            android:name=".upload_NOC"
-            android:exported="false" />
-        <activity
-            android:name=".edit_faculty"
-            android:exported="false" />
-        <activity
-            android:name=".faculty_list"
-            android:exported="false" />
-        <activity
-            android:name=".edit_student"
-            android:exported="false" />
-        <activity
-            android:name=".edit_profile"
-            android:exported="false"
-            android:parentActivityName=".profile" />
-        <activity
-            android:name=".company_details"
-            android:exported="false"
-            android:parentActivityName=".student_home" />
-        <activity
-            android:name=".add_company"
-            android:exported="false"
-            android:parentActivityName=".admin_home" />
-        <activity
-            android:name=".add_faculty"
-            android:exported="false"
-            android:parentActivityName=".admin_home" />
-        <activity
-            android:name=".company_list"
-            android:exported="false"
-            android:parentActivityName=".admin_home" />
-        <activity
-            android:name=".profile"
-            android:exported="false"
-            android:parentActivityName=".student_home" />
-        <activity
-            android:name=".add_student"
-            android:exported="false"
-            android:parentActivityName=".admin_home" />
-        <activity
-            android:name=".internship_form"
-            android:exported="false"
-            android:parentActivityName=".student_home" />
-        <activity
-            android:name=".noc_requests"
-            android:exported="false"
-            android:parentActivityName=".faculty_home" />
-        <activity
-            android:name=".register_faculty"
-            android:exported="false" />
-        <activity
-            android:name=".admin_home"
-            android:exported="false" />
-        <activity
-            android:name=".faculty_home"
-            android:exported="false" />
-        <activity
             android:name=".students_list"
-            android:exported="false"
-            android:parentActivityName=".admin_home" />
+            android:exported="false" />
         <activity
             android:name=".forgotPassword"
-            android:exported="false"
-            android:parentActivityName=".login" />
+            android:exported="false" />
         <activity
             android:name=".register"
             android:exported="false" />
@@ -90,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".student_home"
+            android:name=".navigation_drawer"
             android:exported="false" />
     </application>
 
