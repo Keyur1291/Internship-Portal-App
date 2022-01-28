@@ -18,7 +18,7 @@
             android:layout_height="match_parent" >
 
             <com.google.android.material.appbar.AppBarLayout
-                android:background="@color/md_theme_light_primary"
+                android:theme="@style/Widget.Material3.AppBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
