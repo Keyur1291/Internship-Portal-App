@@ -8,12 +8,11 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="350sp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="40sp"
         app:strokeColor="@android:color/darker_gray"
-        app:strokeWidth="1sp">
+        app:strokeWidth="0sp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,15 +21,17 @@
             android:orientation="vertical"
             android:padding="15sp">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/Widget.Material3.Button.TextButton"
                 android:layout_marginBottom="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Register"
-                android:textColor="@color/black"
                 android:textSize="40sp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                app:boxCornerRadiusTopStart="15sp"
+                app:boxCornerRadiusTopEnd="15sp"
                 android:id="@+id/reg_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,6 +113,8 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                app:boxCornerRadiusBottomStart="15sp"
+                app:boxCornerRadiusBottomEnd="15sp"
                 android:id="@+id/reg_conf_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,13 +129,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:onClick="registerUser"
                 android:layout_marginTop="20sp"
                 android:id="@+id/regibtn"
                 android:layout_width="200sp"
                 android:layout_height="64sp"
                 android:textSize="30sp"
-                android:text="Register" />
+                android:text="register" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -146,14 +148,14 @@
                     android:text="Alread have an account?"
                     android:textSize="18sp" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/Widget.Material3.Button.TextButton"
                     android:id="@+id/loginlink"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10sp"
                     android:layout_marginLeft="5sp"
                     android:text="Sign in"
-                    android:textColor="@color/blue"
                     android:textSize="18sp" />
             </LinearLayout>
 
