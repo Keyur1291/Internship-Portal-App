@@ -11,21 +11,18 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:openDrawer="start">
+        tools:openDrawer="end">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:background="@color/md_theme_light_surface"
-            android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
             <com.google.android.material.appbar.AppBarLayout
-                android:fitsSystemWindows="true"
+                android:theme="@style/Widget.Material3.AppBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
                 <com.google.android.material.appbar.MaterialToolbar
-                    style="@style/Widget.Material3.AppBarLayout"
                     app:navigationIconTint="@color/black"
                     android:id="@+id/appbar"
                     android:layout_width="match_parent"
