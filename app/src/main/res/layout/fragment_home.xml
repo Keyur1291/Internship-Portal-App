@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context=".home">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_marginRight="10sp"
+        android:layout_marginBottom="10sp"
+        android:layout_marginTop="300sp"
+        android:id="@+id/internshipform"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        app:cardCornerRadius="40sp"
+        app:strokeColor="@android:color/black"
+        app:strokeWidth="1sp">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:background="@drawable/ic_baseline_article_24" />
+
+            <TextView
+                android:textColor="@color/md_theme_light_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apply for internship" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_marginLeft="10sp"
+        android:layout_marginBottom="10sp"
+        android:layout_toRightOf="@id/internshipform"
+        android:layout_marginTop="300sp"
+        android:id="@+id/prevcompdtls"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        app:cardCornerRadius="40sp"
+        app:strokeColor="@android:color/black"
+        app:strokeWidth="1sp">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:background="@drawable/ic_baseline_article_24" />
+
+            <TextView
+                android:textAlignment="center"
+                android:textColor="@color/md_theme_light_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Previous company details" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_below="@id/internshipform"
+        android:id="@+id/completioncerti"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        app:cardCornerRadius="40sp"
+        app:strokeColor="@android:color/black"
+        app:strokeWidth="1sp">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/certificate" />
+
+            <TextView
+                android:textAlignment="center"
+                android:textColor="@color/md_theme_light_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload completion certificate" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_below="@id/prevcompdtls"
+        android:layout_toRightOf="@id/completioncerti"
+        android:id="@+id/profile"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        app:cardCornerRadius="40sp"
+        app:strokeColor="@android:color/black"
+        app:strokeWidth="1sp">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:background="@drawable/ic_baseline_article_24" />
+
+            <TextView
+                android:textColor="@color/md_theme_light_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profle" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</RelativeLayout>

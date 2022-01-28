@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/main_item"
+        android:title="Menu">
+        <menu>
+            <item
+                android:id="@+id/home"
+                android:checkable="true"
+                android:icon="@drawable/ic_baseline_home_24"
+                android:title="Home" />
+            <item
+                android:id="@+id/profile"
+                android:checkable="true"
+                android:icon="@drawable/ic_baseline_person_24"
+                android:title="Profile" />
+            <item
+                android:id="@+id/cdetails"
+                android:checkable="true"
+                android:icon="@drawable/ic_baseline_edit_24"
+                android:title="Edit company details" />
+            <item
+                android:id="@+id/about"
+                android:checkable="true"
+                android:icon="@drawable/ic_baseline_info_24"
+                android:title="About" />
+            <item
+                android:id="@+id/NOC"
+                android:checkable="true"
+                android:icon="@drawable/ic_baseline_article_24"
+                android:title="Get NOC" />
+        </menu>
+    </item>
+</menu>
