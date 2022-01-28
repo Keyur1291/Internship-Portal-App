@@ -28,17 +28,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30sp"
+<<<<<<< HEAD
                     android:text="@string/login"
+=======
+                    android:text="Login"
+>>>>>>> 093af0c (Implemented scroll view in login and register page)
                     android:textSize="50sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
                     android:hint="@string/email"
                     app:boxCornerRadiusTopEnd="15sp"
                     app:boxCornerRadiusTopStart="15sp"
                     app:endIconMode="clear_text"
+=======
+                    android:hint="Email"
+                    app:boxCornerRadiusTopEnd="15sp"
+                    app:boxCornerRadiusTopStart="15sp"
+>>>>>>> 093af0c (Implemented scroll view in login and register page)
                     app:startIconDrawable="@drawable/ic_baseline_mail_24">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -52,7 +62,11 @@
                     android:id="@+id/login_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
                     android:hint="@string/password"
+=======
+                    android:hint="Password"
+>>>>>>> 093af0c (Implemented scroll view in login and register page)
                     app:boxCornerRadiusBottomEnd="15sp"
                     app:boxCornerRadiusBottomStart="15sp"
                     app:passwordToggleEnabled="true"
@@ -78,7 +92,11 @@
                     style="@style/Widget.Material3.Button.TonalButton"
                     android:layout_width="200sp"
                     android:layout_height="64sp"
+<<<<<<< HEAD
                     android:text="@string/login"
+=======
+                    android:text="login"
+>>>>>>> 093af0c (Implemented scroll view in login and register page)
                     android:textSize="30sp" />
 
                 <LinearLayout
