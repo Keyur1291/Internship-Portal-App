@@ -3,83 +3,81 @@ package com.android.internshipportal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
+
+import com.google.errorprone.annotations.RequiredModifiers;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Objects;
+
+
 public class login extends AppCompatActivity {
 
-    Button logbtn;
-    TextView reglink;
-    TextView forgotpass;
+    Button logBtn;
+    TextView regLink;
+    TextView forgotPass;
     TextInputLayout loginEmail, loginPass;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        CharSequence textFieldError=this.getResources().getString(R.string.field_empty_error);
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         loginEmail = findViewById(R.id.login_email);
         loginPass = findViewById(R.id.login_pass);
-        logbtn = (Button) findViewById(R.id.login);
-        logbtn.setOnClickListener(View -> {
-            loginUser();
-        });
-
-        reglink = (TextView) findViewById(R.id.regilink);
-        reglink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(login.this, register.class);
-                startActivity(intent);
+        logBtn =  findViewById(R.id.login);
+        logBtn.setOnClickListener(View -> {
+            try{
+                loginUser(textFieldError);
+            }catch (Exception e){
+                Toast.makeText(this,R.string.login_error +" "+e,Toast.LENGTH_SHORT).show();
             }
         });
 
-        forgotpass = (TextView) findViewById(R.id.forgotpassword);
-        forgotpass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(login.this, forgotPassword.class);
-                startActivity(intent);
-            }
+        regLink = findViewById(R.id.regilink);
+        regLink.setOnClickListener(v -> {
+            Intent intent = new Intent(login.this, register.class);
+            startActivity(intent);
+        });
+
+        forgotPass =  findViewById(R.id.forgotpassword);
+        forgotPass.setOnClickListener(v -> {
+            Intent intent = new Intent(login.this, forgotPassword.class);
+            startActivity(intent);
         });
     }
 
-    private void loginUser() {
-        String email = loginEmail.getEditText().getText().toString();
-        String password = loginPass.getEditText().getText().toString();
+    private void loginUser(CharSequence textFieldError) {
+        String email = Objects.requireNonNull(loginEmail.getEditText()).getText().toString();
+        String password = Objects.requireNonNull(loginPass.getEditText()).getText().toString();
 
         if (TextUtils.isEmpty(email)) {
-            loginEmail.setError("Field cannot be empty");
+            loginEmail.setError(textFieldError);
             loginEmail.requestFocus();
         } else if (TextUtils.isEmpty(password)) {
-            loginPass.setError("Field cannot be empty");
+            loginPass.setError(textFieldError);
             loginPass.requestFocus();
         } else {
-            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()) {
-                        Toast.makeText(login.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(login.this, navigation_drawer.class));
-                    } else {
-                        Toast.makeText(login.this, "Login Error: " + task.getException().getMessage() , Toast.LENGTH_SHORT).show();
-                    }
+
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+                if(task.isSuccessful()) {
+                    Toast.makeText(login.this, R.string.user_logged_in, Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(login.this, navigation_drawer.class));
+                } else {
+                    Toast.makeText(login.this, R.string.login_error + Objects.requireNonNull(task.getException()).getMessage() , Toast.LENGTH_SHORT).show();
                 }
             });
         }
