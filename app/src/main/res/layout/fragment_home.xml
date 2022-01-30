@@ -91,8 +91,8 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:tint="@color/material_dynamic_primary50"
                 android:layout_width="100sp"
-                android:layout_height="100sp"/>
-<!--                android:src="@drawable/ic_baseline_card_membership_24" />-->
+                android:layout_height="100sp"
+                android:src="@drawable/ic_baseline_card_membership_24" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:textColor="@color/material_dynamic_primary50"
