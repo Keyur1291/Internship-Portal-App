@@ -51,6 +51,7 @@
         app:strokeWidth="0sp">
 
         <LinearLayout
+            android:id="@+id/companyLayout"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
