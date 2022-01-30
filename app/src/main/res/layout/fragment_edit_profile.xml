@@ -14,9 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        app:cardCornerRadius="40sp"
-        app:strokeColor="@android:color/darker_gray"
-        app:strokeWidth="1sp">
+        app:cardCornerRadius="40sp" >
 
         <LinearLayout
             android:layout_width="match_parent"

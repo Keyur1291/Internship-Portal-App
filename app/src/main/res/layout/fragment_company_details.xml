@@ -15,9 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        app:cardCornerRadius="40sp"
-        app:strokeColor="@android:color/darker_gray"
-        app:strokeWidth="1sp">
+        app:cardCornerRadius="40sp" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -140,7 +138,6 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/editprofilebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
