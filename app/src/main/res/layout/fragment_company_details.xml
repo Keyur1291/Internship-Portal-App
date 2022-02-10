@@ -33,15 +33,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="Area of Interest: " />
+                    android:text="@string/area_of_interest" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
                     android:id="@+id/companyAreaOfInterest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp"
-                    android:text="Area of interest" />
+                    android:layout_marginTop="20sp" />
 
             </LinearLayout>
 
@@ -55,15 +54,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="Company address " />
+                    android:text="@string/company_address" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
                     android:id="@+id/companyAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp"
-                    android:text="Comp address" />
+                    android:layout_marginTop="20sp" />
 
             </LinearLayout>
 
@@ -77,15 +75,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="Company name: " />
+                    android:text="@string/company_name" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
                     android:id="@+id/companyName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp"
-                    android:text="Company name" />
+                    android:layout_marginTop="20sp" />
 
             </LinearLayout>
 
@@ -99,15 +96,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="Contact no: " />
+                    android:text="@string/contact_no" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
                     android:id="@+id/companyContactNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp"
-                    android:text="Company contact no" />
+                    android:layout_marginTop="20sp" />
 
             </LinearLayout>
 
@@ -121,15 +117,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="Company email: " />
+                    android:text="@string/company_email" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
                     android:id="@+id/companyEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp"
-                    android:text="Company email" />
+                    android:layout_marginTop="20sp" />
 
             </LinearLayout>
 
@@ -144,6 +139,6 @@
         android:layout_below="@id/profileview"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30sp"
-        android:text="Edit Company Details" />
+        android:text="@string/edit_company_details" />
 
 </RelativeLayout>

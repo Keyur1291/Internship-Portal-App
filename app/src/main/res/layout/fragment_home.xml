@@ -34,15 +34,15 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Apply for internship" />
+                android:text="@string/apply_for_internship" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Elevated"
-        android:layout_marginLeft="10sp"
+        android:layout_marginStart="10sp"
         android:layout_marginBottom="10sp"
-        android:layout_toRightOf="@id/internshipform"
+        android:layout_toEndOf="@id/internshipform"
         android:layout_marginTop="320sp"
         android:id="@+id/prevcompdtls"
         android:layout_width="150sp"
@@ -67,13 +67,13 @@
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Previous company details" />
+                android:text="@string/previous_company_details" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Elevated"
-        android:layout_marginRight="10sp"
+        android:layout_marginEnd="10sp"
         android:layout_marginTop="10sp"
         android:layout_below="@id/internshipform"
         android:id="@+id/completioncerti"
@@ -99,16 +99,16 @@
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload completion certificate" />
+                android:text="@string/upload_completion_certificate" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Elevated"
-        android:layout_marginLeft="10sp"
+        android:layout_marginStart="10sp"
         android:layout_marginTop="10sp"
         android:layout_below="@id/prevcompdtls"
-        android:layout_toRightOf="@id/completioncerti"
+        android:layout_toEndOf="@id/completioncerti"
         android:id="@+id/profile"
         android:layout_width="150sp"
         android:layout_height="150sp"
@@ -132,7 +132,7 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profile" />
+                android:text="@string/profile" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
