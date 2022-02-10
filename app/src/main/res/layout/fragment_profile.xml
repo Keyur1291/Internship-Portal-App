@@ -37,8 +37,7 @@
                     android:textSize="30sp"
                     android:id="@+id/profileName"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Your name" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -52,15 +51,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="Department: " />
+                    android:text="@string/department" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
                     android:id="@+id/profileDepartment"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="Your department" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -74,14 +71,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="Mobile no: " />
+                    android:text="@string/mobile_no" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
                     android:id="@+id/profileMobileNumber"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Your mobile no" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -95,14 +91,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="Email: " />
+                    android:text="@string/email" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
                     android:id="@+id/profileEmail"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Your email" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -117,7 +112,7 @@
         android:layout_below="@id/profileview"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30sp"
-        android:text="Edit Profile" />
+        android:text="@string/edit_profile" />
 
 
 </RelativeLayout>
