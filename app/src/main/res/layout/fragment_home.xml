@@ -25,13 +25,11 @@
             android:orientation="vertical" >
 
             <com.google.android.material.imageview.ShapeableImageView
-
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:src="@drawable/ic_baseline_article_24" />
 
             <com.google.android.material.textview.MaterialTextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Apply for internship" />
@@ -58,13 +56,11 @@
             android:orientation="vertical" >
 
             <com.google.android.material.imageview.ShapeableImageView
-
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:src="@drawable/ic_baseline_domain_24" />
 
             <com.google.android.material.textview.MaterialTextView
-
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -90,13 +86,11 @@
             android:orientation="vertical" >
 
             <com.google.android.material.imageview.ShapeableImageView
-
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:src="@drawable/ic_baseline_card_membership_24" />
 
             <com.google.android.material.textview.MaterialTextView
-
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,13 +118,11 @@
             android:id="@+id/profileLayout">
 
             <com.google.android.material.imageview.ShapeableImageView
-
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:src="@drawable/ic_baseline_person_24" />
 
             <com.google.android.material.textview.MaterialTextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Profile" />
