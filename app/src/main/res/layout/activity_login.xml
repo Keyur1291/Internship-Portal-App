@@ -78,7 +78,7 @@
                     android:id="@+id/login"
                     android:layout_width="200sp"
                     android:layout_height="64sp"
-                    android:text="login"
+                    android:text="Login"
                     android:textSize="30sp" />
 
                 <LinearLayout
