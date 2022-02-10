@@ -5,7 +5,7 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:openDrawer="end"
+        tools:openDrawer="start"
         tools:context=".navigation_drawer">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -23,7 +23,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:navigationIcon="@drawable/ic_baseline_menu_24"
-                    app:navigationIconTint="@color/black"
                     app:title="@string/app_name" />
 
             </com.google.android.material.appbar.AppBarLayout>
@@ -49,9 +48,9 @@
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20sp"
-                android:layout_marginTop="410sp"
-                android:text="Log Out"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="420sp"
+                android:text="@string/log_out"
                 android:textColor="@color/md_theme_light_error"
                 app:rippleColor="@color/md_theme_light_error"
                 app:strokeColor="@color/md_theme_light_error" />
