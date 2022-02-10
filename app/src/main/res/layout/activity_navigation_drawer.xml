@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"
                 android:layout_marginTop="420sp"
-                android:text="Log Out"
+                android:text="@string/log_out"
                 android:textColor="@color/md_theme_light_error"
                 app:rippleColor="@color/md_theme_light_error"
                 app:strokeColor="@color/md_theme_light_error" />
