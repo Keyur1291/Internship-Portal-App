@@ -35,6 +35,7 @@
             android:layout_height="match_parent" />
 
         <com.google.android.material.navigation.NavigationView
+            app:itemShapeInsetStart="-40sp"
             android:id="@+id/nav_view"
             android:layout_width="330sp"
             android:layout_height="match_parent"
