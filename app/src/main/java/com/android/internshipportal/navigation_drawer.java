@@ -74,6 +74,7 @@ public class navigation_drawer extends AppCompatActivity implements NavigationVi
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.home);
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -108,7 +109,6 @@ public class navigation_drawer extends AppCompatActivity implements NavigationVi
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, new home());
-
             fragmentTransaction.commit();
         }
 
