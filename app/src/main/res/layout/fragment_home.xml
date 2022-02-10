@@ -15,7 +15,7 @@
         android:id="@+id/internshipform"
         android:layout_width="150sp"
         android:layout_height="150sp"
-        app:cardCornerRadius="40sp"
+        app:cardCornerRadius="20sp"
         app:strokeWidth="0sp">
 
         <LinearLayout
@@ -47,7 +47,7 @@
         android:id="@+id/prevcompdtls"
         android:layout_width="150sp"
         android:layout_height="150sp"
-        app:cardCornerRadius="40sp"
+        app:cardCornerRadius="20sp"
         app:strokeWidth="0sp">
 
         <LinearLayout
@@ -80,7 +80,7 @@
         android:id="@+id/completioncerti"
         android:layout_width="150sp"
         android:layout_height="150sp"
-        app:cardCornerRadius="40sp"
+        app:cardCornerRadius="20sp"
         app:strokeWidth="0sp">
 
         <LinearLayout
@@ -113,7 +113,7 @@
         android:id="@+id/profile"
         android:layout_width="150sp"
         android:layout_height="150sp"
-        app:cardCornerRadius="40sp"
+        app:cardCornerRadius="20sp"
         app:strokeWidth="0sp">
 
         <LinearLayout
