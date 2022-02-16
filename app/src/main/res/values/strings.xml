@@ -38,4 +38,5 @@
     <string name="company_email">Company email:</string>
     <string name="edit_company_details">Edit Company Details</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="save_profile">Save Profile</string>
 </resources>
