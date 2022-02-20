@@ -2,24 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/apply_for_internship"
+        android:id="@+id/nav_apply_for_internship"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_article_24"
-        android:title="@string/apply_internship"/>
+        android:title="@string/apply_now"/>
 
     <item
-        android:id="@+id/completioncerti"
+        android:id="@+id/nav_ompletioncerti"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_card_membership_24"
         android:title="@string/certificate"/>
 
     <item
-        android:id="@+id/company_details"
+        android:id="@+id/nav_company_details"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_domain_24"
         android:title="@string/companies"/>
     <item
-        android:id="@+id/profile"
+        android:id="@+id/nav_profile"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="@string/profile"/>
