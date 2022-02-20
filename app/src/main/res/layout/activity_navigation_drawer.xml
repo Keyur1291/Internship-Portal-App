@@ -5,7 +5,7 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:openDrawer="start"
+        tools:openDrawer="end"
         tools:context=".navigation_drawer">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -44,12 +44,13 @@
             app:menu="@menu/nav_menu_student">
 
             <com.google.android.material.button.MaterialButton
+                android:layout_gravity="bottom"
                 android:id="@+id/logOut"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20sp"
-                android:layout_marginTop="420sp"
+                android:layout_marginStart="120sp"
+                android:layout_marginBottom="30sp"
                 android:text="@string/log_out"
                 android:textColor="@color/md_theme_light_error"
                 app:rippleColor="@color/md_theme_light_error"
