@@ -87,7 +87,7 @@ public class navigation_drawer extends AppCompatActivity implements NavigationVi
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, new internshipform());
+        fragmentTransaction.add(R.id.fragment_container, new internship());
         fragmentTransaction.commit();
 
     }
@@ -116,7 +116,7 @@ public class navigation_drawer extends AppCompatActivity implements NavigationVi
         if(item.getItemId() == R.id.home) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, new internshipform());
+            fragmentTransaction.replace(R.id.fragment_container, new internship());
             fragmentTransaction.commit();
         }
 
