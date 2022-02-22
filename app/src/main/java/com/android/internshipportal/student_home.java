@@ -83,11 +83,11 @@ public class navigation_drawer extends AppCompatActivity implements NavigationVi
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.home);
+        navigationView.setCheckedItem(R.id.profile);
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, new internship());
+        fragmentTransaction.add(R.id.fragment_container, new profile());
         fragmentTransaction.commit();
 
     }
