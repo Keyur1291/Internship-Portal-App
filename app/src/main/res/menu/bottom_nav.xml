@@ -8,7 +8,7 @@
         android:title="@string/apply_now"/>
 
     <item
-        android:id="@+id/nav_ompletioncerti"
+        android:id="@+id/nav_completioncerti"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_card_membership_24"
         android:title="@string/certificate"/>

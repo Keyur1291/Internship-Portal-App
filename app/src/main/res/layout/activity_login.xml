@@ -53,7 +53,6 @@
                     android:id="@+id/login_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="clear_text"
                     android:hint="@string/password"
                     app:boxCornerRadiusBottomEnd="15sp"
                     app:boxCornerRadiusBottomStart="15sp"
