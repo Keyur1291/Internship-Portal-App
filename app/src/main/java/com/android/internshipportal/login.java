@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-import com.google.errorprone.annotations.RequiredModifiers;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
@@ -58,6 +58,16 @@ public class login extends AppCompatActivity {
             Intent intent = new Intent(login.this, forgotPassword.class);
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null) {
+            startActivity(new Intent(login.this, navigation_drawer.class));
+            finish();
+        }
     }
 
     private void loginUser(CharSequence textFieldError) {
