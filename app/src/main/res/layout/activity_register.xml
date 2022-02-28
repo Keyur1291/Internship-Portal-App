@@ -11,7 +11,7 @@
         android:layout_width="350sp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="40sp"
-        app:strokeWidth="0sp" >
+        app:strokeWidth="0sp">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -37,9 +37,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/name"
-                    app:endIconMode="clear_text"
                     app:boxCornerRadiusTopEnd="15sp"
                     app:boxCornerRadiusTopStart="15sp"
+                    app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_person_24">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -52,10 +52,10 @@
                     android:id="@+id/reg_en_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="clear_text"
+                    android:hint="@string/enrollment_no"
                     app:counterEnabled="true"
                     app:counterMaxLength="15"
-                    android:hint="@string/enrollment_no"
+                    app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_person_24">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -69,8 +69,8 @@
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="clear_text"
                     android:hint="@string/department"
+                    app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_domain_24">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -84,10 +84,10 @@
                     android:id="@+id/reg_mobile_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="clear_text"
+                    android:hint="@string/mobile_no"
                     app:counterEnabled="true"
                     app:counterMaxLength="10"
-                    android:hint="@string/mobile_no"
+                    app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_phone_24">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -100,8 +100,8 @@
                     android:id="@+id/reg_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="clear_text"
                     android:hint="@string/email"
+                    app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_mail_24">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -114,7 +114,6 @@
                     android:id="@+id/reg_pasword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="clear_text"
                     android:hint="@string/password"
                     app:passwordToggleEnabled="true"
                     app:startIconDrawable="@drawable/ic_baseline_lock_24">
@@ -129,7 +128,6 @@
                     android:id="@+id/reg_conf_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="clear_text"
                     android:hint="@string/confirm_password"
                     app:boxCornerRadiusBottomEnd="15sp"
                     app:boxCornerRadiusBottomStart="15sp"
@@ -143,8 +141,8 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.Material3.Button.TonalButton"
                     android:id="@+id/regibtn"
+                    style="@style/Widget.Material3.Button.TonalButton"
                     android:layout_width="200sp"
                     android:layout_height="64sp"
                     android:layout_marginTop="20sp"
