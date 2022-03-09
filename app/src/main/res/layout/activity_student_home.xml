@@ -6,45 +6,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".student_home"
-    tools:openDrawer="end">
+    tools:openDrawer="start">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/topbar"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinator"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                style="@style/Widget.Material3.CollapsingToolbar.Large"
+            <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="?attr/collapsingToolbarLayoutLargeSize">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/appbar"
                     style="@style/Widget.Material3.AppBarLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10sp"
+                    android:paddingTop="50sp"
                     app:navigationIcon="@drawable/ic_baseline_menu_24"
                     app:title="@string/app_name" />
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
 
-        <ScrollView
-            android:layout_width="wrap_content"
+            </com.google.android.material.appbar.AppBarLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <FrameLayout
+            android:layout_above="@id/bottom_navigation"
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/topbar">
-
-            <FrameLayout
-                android:id="@+id/fragment_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="20sp" />
-
-        </ScrollView>
+            android:layout_alignParentBottom="true"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_nav" />
 
     </RelativeLayout>
 
@@ -63,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginStart="120sp"
-            android:layout_marginBottom="120sp"
+            android:layout_marginBottom="20sp"
             android:text="@string/log_out"
             android:textColor="@color/md_theme_light_error"
             app:rippleColor="@color/md_theme_light_error"

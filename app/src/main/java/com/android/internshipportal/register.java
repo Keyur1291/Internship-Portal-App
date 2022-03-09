@@ -91,11 +91,17 @@ public class register extends AppCompatActivity {
         } else if (TextUtils.isEmpty(enrollment)) {
             regEn_no.setError(fieldError);
             regEn_no.requestFocus();
+        } else if (enrollment.length() > 15) {
+            regEn_no.setError("Enrollment number should not be longer than 15 digits");
+            regEn_no.requestFocus();
         } else if (TextUtils.isEmpty(department)) {
             regDepartment.setError(fieldError);
             regDepartment.requestFocus();
         } else if (TextUtils.isEmpty(mobile)) {
             regMobile.setError(fieldError);
+            regMobile.requestFocus();
+        } else if (mobile.length() > 10) {
+            regMobile.setError("Mobile number should not be longer than 10 digits");
             regMobile.requestFocus();
         } else if (TextUtils.isEmpty(email)) {
             regEmail.setError(fieldError);
@@ -105,6 +111,10 @@ public class register extends AppCompatActivity {
             regPass.requestFocus();
         } else if (TextUtils.isEmpty(confirmPassword)) {
             regConf_pass.setError("Please confirm your password");
+            regConf_pass.requestFocus();
+        }
+        else if (!confirmPassword.equals(password)) {
+            regConf_pass.setError("Confirm password does not match to password");
             regConf_pass.requestFocus();
         } else {
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
@@ -123,6 +133,7 @@ public class register extends AppCompatActivity {
 
                     documentReference.set(user).addOnSuccessListener(unused -> Log.d(TAG, "onSuccess: User profile is created for " + userID));
                     startActivity(new Intent(register.this, login.class));
+                    finish();
                 } else {
                     Toast.makeText(register.this, "Registration Error: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
