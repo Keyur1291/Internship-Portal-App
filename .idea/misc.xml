@@ -21,7 +21,8 @@
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.2" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_register.xml" value="0.25" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_students_list.xml" value="0.25" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_student_home.xml" value="0.20512820512820512" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_students_list.xml" value="0.2" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/background.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/content.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/department_item.xml" value="0.25" />

@@ -23,13 +23,15 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class navigation_drawer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, profile.onFragmentSelected {
+public class student_home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, profile.onFragmentSelected {
 
     MaterialButton logout;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     FirebaseAuth mAuth;
+    FirebaseFirestore firebaseFirestore;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     BottomNavigationView bottomNavigationView;
@@ -39,9 +41,10 @@ public class navigation_drawer extends AppCompatActivity implements NavigationVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-        setContentView(R.layout.activity_navigation_drawer);
+        setContentView(R.layout.activity_student_home);
 
         mAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.nav_profile);
@@ -62,8 +65,8 @@ public class navigation_drawer extends AppCompatActivity implements NavigationVi
         logout = findViewById(R.id.logOut);
         logout.setOnClickListener(View -> {
             mAuth.signOut();
-            Toast.makeText(navigation_drawer.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(navigation_drawer.this, login.class));
+            Toast.makeText(student_home.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(student_home.this, login.class));
         });
 
         Toolbar toolbar = findViewById(R.id.appbar);
@@ -97,7 +100,7 @@ public class navigation_drawer extends AppCompatActivity implements NavigationVi
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
         if(user == null) {
-            startActivity(new Intent(navigation_drawer.this, login.class));
+            startActivity(new Intent(student_home.this, login.class));
         }
     }
 

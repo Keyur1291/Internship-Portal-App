@@ -70,7 +70,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/department"
-                    app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_domain_24">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView

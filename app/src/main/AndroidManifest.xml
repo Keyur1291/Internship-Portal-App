@@ -14,7 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InternshipPortal">
         <activity
+            android:name=".admin_home"
+            android:exported="false" />
+        <activity
+            android:name=".faculty_home"
+            android:exported="false" />
+        <activity
             android:name=".students_list"
+            android:parentActivityName=".admin_home"
             android:exported="false" />
         <activity
             android:name=".forgotPassword"
@@ -32,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".navigation_drawer"
+            android:name=".student_home"
             android:exported="false" />
     </application>
 
