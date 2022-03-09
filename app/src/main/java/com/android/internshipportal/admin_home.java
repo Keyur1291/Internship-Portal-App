@@ -14,11 +14,13 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class admin_home extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     MaterialButton logout;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class admin_home extends AppCompatActivity {
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_admin_home);
 
+        mAuth = FirebaseAuth.getInstance();
         logout = findViewById(R.id.logOut);
         logout.setOnClickListener(View -> {
             mAuth.signOut();
