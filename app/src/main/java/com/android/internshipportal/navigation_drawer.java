@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationBarView;
@@ -33,6 +35,7 @@ public class navigation_drawer extends AppCompatActivity implements NavigationVi
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     BottomNavigationView bottomNavigationView;
+    MaterialToolbar toolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
@@ -66,22 +69,20 @@ public class navigation_drawer extends AppCompatActivity implements NavigationVi
             startActivity(new Intent(navigation_drawer.this, login.class));
         });
 
-        Toolbar toolbar = findViewById(R.id.appbar);
-        setSupportActionBar(toolbar);
+        toolbar = findViewById(R.id.appbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                drawerLayout.openDrawer(GravityCompat.START);
+
+            }
+        });
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
-                this,
-                drawerLayout,
-                toolbar,
-                R.string.openNavDrawer,
-                R.string.closeNavDrawer
-        );
 
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.profile);
 
