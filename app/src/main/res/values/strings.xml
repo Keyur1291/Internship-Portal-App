@@ -21,6 +21,7 @@
     <string name="sign_up">Sign up</string>
     <string name="log_out">Log Out</string>
     <string name="register">Register</string>
+    <string name="register_as_faculty">Register As Faculty</string>
     <string name="name">Name</string>
     <string name="enrollment_no">Enrollment No.</string>
     <string name="department">Department</string>
@@ -42,4 +43,11 @@
     <string name="companies">Companies</string>
     <string name="certificate">Certificate</string>
     <string name="apply_now">Apply Now</string>
+    <string name="click_here">Click Here</string>
+    <string name="to_register_as_faculty">to register as faculty</string>
+    <string name="to_register_as_student">to register as student</string>
+    <string name="noc_requests">NOC Requests</string>
+    <string name="about">About</string>
+    <string name="get_noc_letter">Get NOC letter</string>
+    <string name="delete_user">Delete User</string>
 </resources>

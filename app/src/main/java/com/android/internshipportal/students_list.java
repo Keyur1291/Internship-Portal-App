@@ -3,14 +3,18 @@ package com.android.internshipportal;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.WindowCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,13 +32,15 @@ public class students_list extends AppCompatActivity {
     ArrayList<user_list> userArrayList;
     myAdapter myAdapter;
     ProgressDialog progressDialog;
+    MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_students_list);
 
-        Toolbar toolbar = findViewById(R.id.appbar);
+        toolbar = findViewById(R.id.appbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -79,6 +85,10 @@ public class students_list extends AppCompatActivity {
                 }
             }
         });
+
+    }
+
+    public void userInfo(View view) {
 
     }
 }

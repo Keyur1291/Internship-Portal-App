@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".register">
+    tools:context=".register_faculty">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -22,18 +22,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="15sp">
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/title"
                     style="@style/Widget.Material3.Button.TextButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20sp"
-                    android:text="@string/register"
-                    android:textSize="40sp" />
+                    android:text="@string/register_as_faculty"
+                    android:textSize="33sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/reg_name"
+                    android:id="@+id/reg_namef"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/name"
@@ -49,23 +51,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/reg_en_no"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/enrollment_no"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="15"
-                    app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/ic_baseline_person_24">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/dmenu"
+                    android:id="@+id/dmenuf"
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -73,14 +59,14 @@
                     app:startIconDrawable="@drawable/ic_baseline_domain_24">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:id="@+id/department"
+                        android:id="@+id/departmentf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textAutoComplete" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/reg_mobile_no"
+                    android:id="@+id/reg_mobile_nof"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/mobile_no"
@@ -96,7 +82,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/reg_email"
+                    android:id="@+id/reg_emailf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
@@ -110,7 +96,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/reg_pasword"
+                    android:id="@+id/reg_paswordf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
@@ -124,7 +110,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/reg_conf_password"
+                    android:id="@+id/reg_conf_passwordf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/confirm_password"
@@ -140,7 +126,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/regibtn"
+                    android:id="@+id/regibtnf"
                     style="@style/Widget.Material3.Button.TonalButton"
                     android:layout_width="200sp"
                     android:layout_height="64sp"
@@ -154,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <com.google.android.material.textview.MaterialTextView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10sp"
@@ -162,7 +148,7 @@
                         android:textSize="18sp" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/loginlink"
+                        android:id="@+id/loginlinkf"
                         style="@style/Widget.Material3.Button.TextButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -178,7 +164,7 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/facultylink"
+                        android:id="@+id/studentlink"
                         style="@style/Widget.Material3.Button.TextButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -188,7 +174,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/to_register_as_faculty"
+                        android:text="@string/to_register_as_student"
                         android:textSize="18sp" />
                 </LinearLayout>
 
