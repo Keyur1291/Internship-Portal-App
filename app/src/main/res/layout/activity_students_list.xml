@@ -7,31 +7,35 @@
     android:orientation="vertical"
     tools:context=".students_list">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/coordinator"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/topbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="?attr/collapsingToolbarLayoutLargeStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="?attr/collapsingToolbarLayoutMediumSize"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/appbar"
                 style="@style/Widget.Material3.AppBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="10sp"
+                app:layout_collapseMode="pin"
                 app:title="Registered Students" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        </com.google.android.material.appbar.AppBarLayout>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        tools:listitem="@layout/list_item"
-        android:layout_marginTop="?attr/actionBarSize"
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/topbar"
+        android:onClick="userInfo"
+        tools:listitem="@layout/students_list_item" />
 
 </RelativeLayout>

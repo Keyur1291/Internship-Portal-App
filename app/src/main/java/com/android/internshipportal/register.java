@@ -8,10 +8,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,8 +26,8 @@ import java.util.Objects;
 public class register extends AppCompatActivity {
 
     public static final String TAG = "TAG";
-    Button regBtn;
-    TextView logLink;
+    MaterialButton regBtn;
+    TextView logLink, regFaculty;
     TextInputLayout regDepartment, regName, regMobile, regPass, regConf_pass, regEn_no, regEmail;
     AutoCompleteTextView autoCompleteTextView;
     ArrayList<String> arrayList;
@@ -61,7 +61,7 @@ public class register extends AppCompatActivity {
         arrayList.add("Environmental Engineering");
         arrayList.add("Civil Engineering");
 
-        arrayAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.department_item, arrayList);
+        arrayAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.dropdown_item, arrayList);
         autoCompleteTextView.setAdapter(arrayAdapter);
 
         autoCompleteTextView.setThreshold(1);
@@ -71,8 +71,14 @@ public class register extends AppCompatActivity {
 
         logLink =  findViewById(R.id.loginlink);
         logLink.setOnClickListener(v -> {
-            Intent intent = new Intent(register.this, login.class);
-            startActivity(intent);
+            startActivity(new Intent(register.this, login.class));
+            finish();
+        });
+
+        regFaculty = findViewById(R.id.facultylink);
+        regFaculty.setOnClickListener(v -> {
+            startActivity(new Intent(register.this, register_faculty.class));
+            finish();
         });
     }
 
@@ -109,11 +115,13 @@ public class register extends AppCompatActivity {
         } else if (TextUtils.isEmpty(password)) {
             regPass.setError(fieldError);
             regPass.requestFocus();
+        } else if (password.length() < 6) {
+            regPass.setError("Password should be more longer");
+            regPass.requestFocus();
         } else if (TextUtils.isEmpty(confirmPassword)) {
             regConf_pass.setError("Please confirm your password");
             regConf_pass.requestFocus();
-        }
-        else if (!confirmPassword.equals(password)) {
+        } else if (!confirmPassword.equals(password)) {
             regConf_pass.setError("Confirm password does not match to password");
             regConf_pass.requestFocus();
         } else {
@@ -131,7 +139,7 @@ public class register extends AppCompatActivity {
                     user.put("password", password);
                     user.put("isStudent", "1");
 
-                    documentReference.set(user).addOnSuccessListener(unused -> Log.d(TAG, "onSuccess: User profile is created for " + userID));
+                    documentReference.set(user).addOnSuccessListener(unused -> Log.d(TAG, "onSuccess: User profile is created for " + name));
                     startActivity(new Intent(register.this, login.class));
                     finish();
                 } else {
