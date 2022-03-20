@@ -8,11 +8,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,7 +26,7 @@ public class register_faculty extends AppCompatActivity {
 
     public static final String TAG = "TAG";
     MaterialButton regBtn;
-    MaterialTextView logLink, regStudent;
+    TextView logLink, regStudent;
     TextInputLayout regDepartment, regName, regMobile, regPass, regConf_pass, regEmail;
     AutoCompleteTextView autoCompleteTextView;
     ArrayList<String> arrayList;
@@ -123,7 +123,7 @@ public class register_faculty extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Toast.makeText(register_faculty.this, "User registered successfully", Toast.LENGTH_SHORT).show();
                     userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-                    DocumentReference documentReference = fireStore.collection("Users").document(userID);
+                    DocumentReference documentReference = fireStore.collection("Faculties").document(userID);
                     Map<String, Object> user = new HashMap<>();
                     user.put("name", name);
                     user.put("department", department);

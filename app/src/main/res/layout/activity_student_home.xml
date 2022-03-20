@@ -12,33 +12,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/coordinator"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/topbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.appbar.AppBarLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                style="?attr/collapsingToolbarLayoutLargeStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="?attr/collapsingToolbarLayoutMediumSize">
 
                 <com.google.android.material.appbar.MaterialToolbar
+                    android:paddingTop="10sp"
+                    app:contentInsetStart="?attr/actionBarSize"
                     android:id="@+id/appbar"
                     style="@style/Widget.Material3.AppBarLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="50sp"
+                    android:layout_height="match_parent"
                     app:navigationIcon="@drawable/ic_baseline_menu_24"
                     app:title="@string/app_name" />
-
-            </com.google.android.material.appbar.AppBarLayout>
-
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
         <FrameLayout
-            android:layout_above="@id/bottom_navigation"
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottom_navigation"
+            android:layout_below="@id/topbar" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
@@ -46,7 +47,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_nav" />
+            app:menu="@menu/bottom_nav">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </RelativeLayout>
 

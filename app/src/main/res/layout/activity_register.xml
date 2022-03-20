@@ -8,10 +8,11 @@
     tools:context=".register">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="350sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10sp"
         app:cardCornerRadius="40sp"
-        app:strokeWidth="0sp" >
+        app:strokeWidth="0sp">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -21,8 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:padding="15sp">
+                android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/Widget.Material3.Button.TextButton"
@@ -39,6 +39,7 @@
                     android:hint="@string/name"
                     app:boxCornerRadiusTopEnd="15sp"
                     app:boxCornerRadiusTopStart="15sp"
+                    app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_person_24">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -52,6 +53,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enrollment_no"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="15"
+                    app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_person_24">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -80,6 +84,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/mobile_no"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="10"
+                    app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_phone_24">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -93,6 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
+                    app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_mail_24">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -132,8 +140,8 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.Material3.Button.TonalButton"
                     android:id="@+id/regibtn"
+                    style="@style/Widget.Material3.Button.TonalButton"
                     android:layout_width="200sp"
                     android:layout_height="64sp"
                     android:layout_marginTop="20sp"
@@ -141,11 +149,12 @@
                     android:textSize="30sp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10sp"
@@ -157,9 +166,29 @@
                         style="@style/Widget.Material3.Button.TextButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5sp"
                         android:layout_marginTop="10sp"
                         android:text="@string/sign_in"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/facultylink"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/click_here"
+                        android:textSize="18sp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/to_register_as_faculty"
                         android:textSize="18sp" />
                 </LinearLayout>
 

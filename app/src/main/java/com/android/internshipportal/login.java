@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 import com.google.firebase.auth.AuthResult;
@@ -26,7 +27,7 @@ import java.util.Objects;
 
 public class login extends AppCompatActivity {
 
-    Button logBtn;
+    MaterialButton logBtn;
     TextView regLink;
     TextView forgotPass;
     TextInputLayout loginEmail, loginPass;
@@ -46,11 +47,7 @@ public class login extends AppCompatActivity {
         loginPass = findViewById(R.id.login_pass);
         logBtn =  findViewById(R.id.login);
         logBtn.setOnClickListener(View -> {
-            try{
-                loginUser(textFieldError);
-            }catch (Exception e){
-                Toast.makeText(this,R.string.login_error +" "+e,Toast.LENGTH_SHORT).show();
-            }
+            loginUser(textFieldError);
         });
 
         regLink = findViewById(R.id.regilink);
@@ -69,10 +66,34 @@ public class login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user != null) {
-            startActivity(new Intent(login.this, admin_home.class));
-            finish();
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+            DocumentReference df = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if (documentSnapshot.getString("isAdmin") != null) {
+                        startActivity(new Intent(getApplicationContext(),admin_home.class));
+                        finish();
+                    }
+
+                    if (documentSnapshot.getString("isStudent") != null) {
+                        startActivity(new Intent(getApplicationContext(),student_home.class));
+                        finish();
+                    }
+
+                    if (documentSnapshot.getString("isFaculty") != null) {
+                        startActivity(new Intent(getApplicationContext(),faculty_home.class));
+                        finish();
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(getApplicationContext(), login.class));
+                    finish();
+                }
+            });
         }
     }
 
@@ -97,7 +118,7 @@ public class login extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(login.this,"Login Error" + Objects.requireNonNull(e), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
