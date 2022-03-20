@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".internshipPortal"
+        android:name=".dynamicColors"
         android:allowBackup="true"
         android:fullBackupOnly="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,8 +14,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InternshipPortal">
         <activity
-            android:name=".students_list"
+            android:name=".user_control"
             android:exported="false" />
+        <activity
+            android:name=".internship_form"
+            android:exported="false" />
+        <activity
+            android:name=".noc_requests"
+            android:exported="false" />
+        <activity
+            android:name=".register_faculty"
+            android:exported="false" />
+        <activity
+            android:name=".admin_home"
+            android:exported="false" />
+        <activity
+            android:name=".faculty_home"
+            android:exported="false" />
+        <activity
+            android:name=".students_list"
+            android:exported="false"
+            android:parentActivityName=".admin_home" />
         <activity
             android:name=".forgotPassword"
             android:exported="false" />
@@ -32,7 +51,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".navigation_drawer"
+            android:name=".student_home"
             android:exported="false" />
     </application>
 

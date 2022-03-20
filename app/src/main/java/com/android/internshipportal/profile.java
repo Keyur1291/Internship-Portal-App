@@ -61,6 +61,7 @@ public class profile extends Fragment {
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                assert value != null;
                 pname.setText(value.getString("name"));
                 pdepartment.setText(value.getString("department"));
                 pmobile.setText(value.getString("mobile"));
@@ -76,7 +77,7 @@ public class profile extends Fragment {
         if (context instanceof onFragmentSelected) {
             listener = (onFragmentSelected) context;
         } else {
-            throw new ClassCastException(context.toString() + "must implement listner");
+            throw new ClassCastException(context.toString() + "must implement listener");
         }
 
     }
