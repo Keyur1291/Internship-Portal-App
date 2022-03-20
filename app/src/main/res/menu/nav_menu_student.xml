@@ -5,30 +5,25 @@
     <item android:title="">
         <menu>
             <item
-                android:id="@+id/home"
+                android:id="@+id/form"
                 android:checkable="true"
                 android:icon="@drawable/ic_baseline_home_24"
-                android:title="Home" />
-            <item
-                android:id="@+id/profile"
-                android:checkable="true"
-                android:icon="@drawable/ic_baseline_person_24"
-                android:title="Profile" />
+                android:title="@string/apply_for_internship" />
             <item
                 android:id="@+id/cdetails"
                 android:checkable="true"
                 android:icon="@drawable/ic_baseline_edit_24"
-                android:title="Edit company details" />
+                android:title="@string/edit_company_details" />
             <item
                 android:id="@+id/about"
                 android:checkable="true"
                 android:icon="@drawable/ic_baseline_info_24"
-                android:title="About" />
+                android:title="@string/about" />
             <item
                 android:id="@+id/NOC"
                 android:checkable="true"
                 android:icon="@drawable/ic_baseline_article_24"
-                android:title="Get NOC" />
+                android:title="@string/get_noc_letter" />
         </menu>
     </item>
 </menu>

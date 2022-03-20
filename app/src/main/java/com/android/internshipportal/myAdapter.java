@@ -25,7 +25,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myViewHolder> {
     @Override
     public myAdapter.myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.list_item, parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.students_list_item, parent,false);
 
         return new myViewHolder(v);
     }
@@ -34,7 +34,6 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myViewHolder> {
     public void onBindViewHolder(@NonNull myAdapter.myViewHolder holder, int position) {
 
         user_list user_list = userArrayList.get(position);
-
         holder.name.setText(user_list.name);
         holder.enrollment.setText(user_list.enrollment);
         holder.department.setText(user_list.department);
