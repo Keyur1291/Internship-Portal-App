@@ -139,7 +139,7 @@ public class register extends AppCompatActivity {
                     user.put("password", password);
                     user.put("isStudent", "1");
 
-                    documentReference.set(user).addOnSuccessListener(unused -> Log.d(TAG, "onSuccess: User profile is created for " + name));
+                    documentReference.set(user).addOnSuccessListener(unused -> Log.d(TAG, "User profile is created for " + name));
                     startActivity(new Intent(register.this, login.class));
                     finish();
                 } else {

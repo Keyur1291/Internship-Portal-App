@@ -42,7 +42,6 @@ public class student_home extends AppCompatActivity implements NavigationView.On
     BottomNavigationView bottomNavigationView;
     MaterialToolbar toolbar;
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,17 +53,25 @@ public class student_home extends AppCompatActivity implements NavigationView.On
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.nav_profile);
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.nav_profile) {
-                    fragmentManager = getSupportFragmentManager();
-                    fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, new profile());
-                    fragmentTransaction.commit();
-                }
-
-                return true;
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.nav_profile) {
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, new profile());
+                fragmentTransaction.commit();
+            } else if (item.getItemId() == R.id.nav_company_details) {
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, new company_details());
+                fragmentTransaction.commit();
+            }
+            return true;
+        });
+        bottomNavigationView.setOnItemReselectedListener(item -> {
+            if (item.getItemId() == R.id.nav_profile) {
+                //Do Nothing
+            } else if (item.getItemId() == R.id.nav_company_details) {
+                //Do Nothing
             }
         });
 
@@ -113,13 +120,6 @@ public class student_home extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         if (item.getItemId() == R.id.form) {
             startActivity(new Intent(student_home.this, internship_form.class));
-        }
-
-        if (item.getItemId() == R.id.cdetails) {
-            fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, new company_details());
-            fragmentTransaction.commit();
         }
 
         if (item.getItemId() == R.id.about) {
