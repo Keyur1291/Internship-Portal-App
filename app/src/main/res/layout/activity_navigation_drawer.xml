@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginStart="120sp"
-            android:layout_marginBottom="20sp"
+            android:layout_marginBottom="120sp"
             android:text="@string/log_out"
             android:textColor="@color/md_theme_light_error"
             app:rippleColor="@color/md_theme_light_error"

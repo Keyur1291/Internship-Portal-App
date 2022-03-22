@@ -10,27 +10,48 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/profileview"
+        android:id="@+id/companydtls"
         style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="358sp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        app:cardCornerRadius="40sp" >
+        app:cardCornerRadius="30sp" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="15sp">
+            android:padding="30sp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
+                    android:src="@drawable/ic_baseline_domain_24" />
+
                 <com.google.android.material.textview.MaterialTextView
-                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:id="@+id/companyName"
+                    android:text="@string/company_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
@@ -38,20 +59,20 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
-                    android:id="@+id/companyAreaOfInterest"
+                    android:id="@+id/subject"
+                    android:text="@string/subject"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:textSize="20sp"
+                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
@@ -60,40 +81,19 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
                     android:id="@+id/companyAddress"
+                    android:text="@string/company_address"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:textSize="20sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp"
-                    android:text="@string/company_name" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:textSize="20sp"
-                    android:id="@+id/companyName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:textSize="20sp"
+                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
@@ -101,20 +101,20 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
-                    android:id="@+id/companyContactNumber"
+                    android:id="@+id/companyMobile"
+                    android:text="@string/mobile_no"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:textSize="20sp"
+                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
@@ -123,9 +123,9 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:textSize="20sp"
                     android:id="@+id/companyEmail"
+                    android:text="@string/email"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -137,9 +137,10 @@
         android:id="@+id/editprofilebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profileview"
+        android:layout_below="@id/companydtls"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30sp"
-        android:text="@string/edit_company_details" />
+        android:layout_marginTop="20sp"
+        android:text="@string/edit_company_details"
+        app:elevation="10sp" />
 
 </RelativeLayout>

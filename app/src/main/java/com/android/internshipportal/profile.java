@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,11 +19,11 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import java.util.concurrent.Executor;
+import java.util.Objects;
 
 public class profile extends Fragment {
 
-    TextView pname, pmobile, pdepartment, pemail;
+    MaterialTextView pname, pmobile, pdepartment, pemail;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -55,7 +55,7 @@ public class profile extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
-        userID = mAuth.getCurrentUser().getUid();
+        userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
 
         DocumentReference documentReference = fStore.collection("Users").document(userID);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
