@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     tools:context=".noc_letter">
 
     <com.google.android.material.card.MaterialCardView
+        app:cardCornerRadius="30sp"
         android:id="@+id/nocview"
         style="@style/Widget.Material3.CardView.Outlined"
         android:layout_width="match_parent"
         android:layout_height="500sp"
-        android:layout_marginHorizontal="30sp"
-        app:cardCornerRadius="30sp">
+        android:layout_marginHorizontal="30sp" >
 
         <ImageView
-            android:id="@+id/Nocimg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/todo"
-            tools:ignore="ContentDescription" />
+            android:id="@+id/Nocimg" />
 
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nocview"
         android:layout_centerHorizontal="true"
+        android:layout_below="@id/nocview"
         android:layout_marginTop="20sp"
-        android:text="@string/download"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:text="@string/download" />
 
 
 </RelativeLayout>
