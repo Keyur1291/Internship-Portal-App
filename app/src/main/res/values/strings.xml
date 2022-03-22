@@ -50,4 +50,9 @@
     <string name="about">About</string>
     <string name="get_noc_letter">Get NOC letter</string>
     <string name="delete_user">Delete User</string>
+    <string name="company_details">Company Details</string>
+    <string name="subject">Subject</string>
+    <string name="download">Download</string>
+    <string name="text">Text</string>
+    <string name="info_text">Internship Portal App is based on Google\'s latest Material Design language named Material You(Material Design 3). It also supports Google\'s latest theming engine named Monet Theme Engine.</string>
 </resources>

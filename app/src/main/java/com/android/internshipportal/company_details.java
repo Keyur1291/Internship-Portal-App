@@ -1,42 +1,47 @@
 package com.android.internshipportal;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.WindowCompat;
-
 import android.os.Bundle;
-import android.widget.Toast;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import com.google.android.material.appbar.MaterialToolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.Objects;
 
-public class company_details extends AppCompatActivity {
+public class company_details extends Fragment {
 
     MaterialTextView subject, cName, cAddress, cMobile, cEmail;
-    MaterialToolbar toolbar;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-        setContentView(R.layout.activity_company_details);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_company_details, container, false);
+        return view;
+    }
 
-        toolbar = findViewById(R.id.appbar);
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        subject = findViewById(R.id.subject);
-        cName = findViewById(R.id.companyName);
-        cAddress = findViewById(R.id.companyAddress);
-        cMobile = findViewById(R.id.companyMobile);
-        cEmail = findViewById(R.id.companyEmail);
+        subject = view.findViewById(R.id.subject);
+        cName = view.findViewById(R.id.companyName);
+        cAddress = view.findViewById(R.id.companyAddress);
+        cMobile = view.findViewById(R.id.companyMobile);
+        cEmail = view.findViewById(R.id.companyEmail);
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -44,15 +49,18 @@ public class company_details extends AppCompatActivity {
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
 
         DocumentReference documentReference = fStore.collection("Users").document(userID);
-        documentReference.get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                subject.setText(documentSnapshot.getString("subject"));
-                cName.setText(documentSnapshot.getString("Cname"));
-                cAddress.setText(documentSnapshot.getString("Caddress"));
-                cMobile.setText(documentSnapshot.getString("Cmobile"));
-                cEmail.setText(documentSnapshot.getString("Cemail"));
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                assert value != null;
+                subject.setText(value.getString("subject"));
+                cName.setText(value.getString("Cname"));
+                cAddress.setText(value.getString("Caddress"));
+                cMobile.setText(value.getString("Cmobile"));
+                cEmail.setText(value.getString("Cemail"));
             }
-        }).addOnFailureListener(e -> Toast.makeText(company_details.this, e.getMessage(), Toast.LENGTH_SHORT).show());
+        });
 
     }
+
 }
