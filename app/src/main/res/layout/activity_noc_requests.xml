@@ -7,19 +7,25 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 tools:context=".noc_requests">
 
-<com.google.android.material.appbar.AppBarLayout
-    android:id="@+id/topbar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/appbar"
-        style="@style/Widget.Material3.AppBarLayout"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/topbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:title="NOC Requests" />
+        android:layout_height="wrap_content">
 
-</com.google.android.material.appbar.AppBarLayout>
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="@style/Widget.Material3.CollapsingToolbar.Large"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/collapsingToolbarLayoutMediumSize">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/appbar"
+                style="@style/Widget.Material3.AppBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                app:title="@string/noc_requests" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
 <androidx.recyclerview.widget.RecyclerView
     tools:listitem="@layout/students_list_item"

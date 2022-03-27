@@ -7,16 +7,7 @@
             android:checkable="true"
             android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/home" />
-        <item
-            android:id="@+id/NOC"
-            android:checkable="true"
-            android:icon="@drawable/ic_baseline_article_24"
-            android:title="@string/get_noc_letter" />
-        <item
-            android:id="@+id/certi"
-            android:checkable="true"
-            android:icon="@drawable/ic_baseline_article_24"
-            android:title="@string/completion_certi" />
+
         <item
             android:id="@+id/about"
             android:checkable="true"

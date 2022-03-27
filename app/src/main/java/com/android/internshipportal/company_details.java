@@ -1,14 +1,16 @@
 package com.android.internshipportal;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -19,47 +21,53 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.Objects;
 
-public class company_details extends Fragment {
+public class company_details extends AppCompatActivity {
 
     MaterialTextView subject, cName, cAddress, cMobile, cEmail;
+    MaterialToolbar toolbar;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_company_details, container, false);
-        return view;
-    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        setContentView(R.layout.activity_company_details);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        toolbar = findViewById(R.id.appbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        subject = view.findViewById(R.id.subject);
-        cName = view.findViewById(R.id.companyName);
-        cAddress = view.findViewById(R.id.companyAddress);
-        cMobile = view.findViewById(R.id.companyMobile);
-        cEmail = view.findViewById(R.id.companyEmail);
+        subject = findViewById(R.id.subject);
+        cName = findViewById(R.id.companyName);
+        cAddress = findViewById(R.id.companyAddress);
+        cMobile = findViewById(R.id.companyMobile);
+        cEmail = findViewById(R.id.companyEmail);
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
 
-        DocumentReference documentReference = fStore.collection("Users").document(userID);
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        DocumentReference documentReference = fStore.collection("Companies").document(userID);
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                subject.setText(value.getString("subject"));
-                cName.setText(value.getString("Cname"));
-                cAddress.setText(value.getString("Caddress"));
-                cMobile.setText(value.getString("Cmobile"));
-                cEmail.setText(value.getString("Cemail"));
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    subject.setText(documentSnapshot.getString("subject"));
+                    cName.setText(documentSnapshot.getString("Cname"));
+                    cAddress.setText(documentSnapshot.getString("Caddress"));
+                    cMobile.setText(documentSnapshot.getString("Cmobile"));
+                    cEmail.setText(documentSnapshot.getString("Cemail"));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(company_details.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
     }
-
 }

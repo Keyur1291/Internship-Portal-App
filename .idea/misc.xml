@@ -18,7 +18,9 @@
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_add_faculty.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_add_student.xml" value="0.176" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_admin_home.xml" value="0.24864130434782608" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_company_details.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_company_list.xml" value="0.20512820512820512" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_edit_profile.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_faculty_home.xml" value="0.24864130434782608" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_home.xml" value="0.2" />
@@ -39,10 +41,13 @@
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/department_item.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_about.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_company_details.xml" value="0.25" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_completion_certi.xml" value="0.176" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_edit_profile.xml" value="0.24864130434782608" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_internship.xml" value="0.264" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_internshipform.xml" value="0.20512820512820512" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_main_faculty.xml" value="0.20512820512820512" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_main_student.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_noc_letter.xml" value="0.2" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_profileview.xml" value="0.20512820512820512" />
