@@ -11,40 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/appbar"
-            style="@style/Widget.Material3.AppBarLayout"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="@style/Widget.Material3.CollapsingToolbar.Large"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:title="@string/apply_for_internship" />
+            android:layout_height="?attr/collapsingToolbarLayoutMediumSize">
 
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/appbar"
+                style="@style/Widget.Material3.AppBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10sp"
+                app:title="Apply For Internship" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_centerInParent="true"
+        android:layout_below="@id/topbar"
+        android:layout_marginTop="20sp"
+        android:layout_marginHorizontal="10sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        app:cardCornerRadius="40sp"
         app:strokeWidth="0sp">
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:orientation="vertical">
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/Widget.Material3.Button.TextButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20sp"
-                    android:text="@string/apply_for_internship"
-                    android:textSize="35sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/areaOfInterest"
@@ -83,7 +81,6 @@
                     app:endIconMode="clear_text">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:padding="40sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPostalAddress" />
@@ -123,14 +120,14 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/applyBtn"
                     style="@style/Widget.Material3.Button.TonalButton"
-                    android:layout_width="200sp"
+                    android:layout_width="wrap_content"
                     android:layout_height="64sp"
                     android:layout_marginTop="20sp"
                     android:text="@string/apply_now"
                     android:textSize="30sp" />
 
             </LinearLayout>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
     </com.google.android.material.card.MaterialCardView>
 
 </RelativeLayout>

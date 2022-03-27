@@ -2,13 +2,12 @@ package com.android.internshipportal;
 
 public class recycle_getter_setter {
 
-    String id, name, enrollment, department, mobile, email, Cname, subject, Caddress, Cmobile, Cemail;
+    String name, enrollment, department, mobile, email, Cname, subject, Caddress, Cmobile, Cemail;
 
     public recycle_getter_setter() {
     }
 
-    public recycle_getter_setter(String id, String name, String enrollment, String department, String mobile, String email, String Cname, String subject, String Caddress, String Cmobile, String Cemail) {
-        this.id = id;
+    public recycle_getter_setter(String name, String enrollment, String department, String mobile, String email, String Cname, String subject, String Caddress, String Cmobile, String Cemail) {
         this.name = name;
         this.enrollment = enrollment;
         this.department = department;
@@ -19,14 +18,6 @@ public class recycle_getter_setter {
         this.Caddress = Caddress;
         this.Cmobile = Cmobile;
         this.Cemail = Cemail;
-    }
-
-    public String getid() {
-        return id;
-    }
-
-    public void setid(String id) {
-        this.id = id;
     }
 
     public String getName() {

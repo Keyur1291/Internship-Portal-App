@@ -52,7 +52,6 @@ public class company_details extends Fragment {
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                assert value != null;
                 subject.setText(value.getString("subject"));
                 cName.setText(value.getString("Cname"));
                 cAddress.setText(value.getString("Caddress"));

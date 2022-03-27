@@ -1,37 +1,30 @@
 package com.android.internshipportal;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowInsets;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class student_home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, profile.onFragmentSelected {
+import java.util.Objects;
 
+public class student_home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    MaterialCardView cardView;
     MaterialButton logout;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -39,7 +32,6 @@ public class student_home extends AppCompatActivity implements NavigationView.On
     FirebaseFirestore firebaseFirestore;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
-    BottomNavigationView bottomNavigationView;
     MaterialToolbar toolbar;
 
     @Override
@@ -51,30 +43,6 @@ public class student_home extends AppCompatActivity implements NavigationView.On
         mAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.nav_profile);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.nav_profile) {
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new profile());
-                fragmentTransaction.commit();
-            } else if (item.getItemId() == R.id.nav_company_details) {
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new company_details());
-                fragmentTransaction.commit();
-            }
-            return true;
-        });
-        bottomNavigationView.setOnItemReselectedListener(item -> {
-            if (item.getItemId() == R.id.nav_profile) {
-                //Do Nothing
-            } else if (item.getItemId() == R.id.nav_company_details) {
-                //Do Nothing
-            }
-        });
-
         logout = findViewById(R.id.logOut);
         logout.setOnClickListener(View -> {
             mAuth.signOut();
@@ -83,13 +51,12 @@ public class student_home extends AppCompatActivity implements NavigationView.On
         });
 
         toolbar = findViewById(R.id.appbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
-                drawerLayout.openDrawer(GravityCompat.START);
-
-            }
+        cardView = findViewById(R.id.profilebtn);
+        cardView.setOnClickListener(View -> {
+            startActivity(new Intent(student_home.this, profile.class));
         });
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -97,11 +64,9 @@ public class student_home extends AppCompatActivity implements NavigationView.On
 
 
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.profile);
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, new profile());
         fragmentTransaction.commit();
 
     }
@@ -125,25 +90,17 @@ public class student_home extends AppCompatActivity implements NavigationView.On
         if (item.getItemId() == R.id.about) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, new about());
+            //fragmentTransaction.replace(R.id.fragment_container, new about());
             fragmentTransaction.commit();
         }
 
         if (item.getItemId() == R.id.NOC) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, new noc_letter());
+            // fragmentTransaction.replace(R.id.fragment_container, new noc_letter());
             fragmentTransaction.commit();
         }
 
         return true;
-    }
-
-    @Override
-    public void onButtonSelected() {
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, new edit_profile());
-        fragmentTransaction.commit();
     }
 }

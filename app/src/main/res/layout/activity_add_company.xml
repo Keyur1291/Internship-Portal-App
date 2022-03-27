@@ -27,13 +27,14 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_centerInParent="true"
+        android:layout_below="@id/topbar"
+        android:layout_marginTop="20sp"
         android:layout_marginHorizontal="10sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:strokeWidth="0sp">
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -126,7 +127,7 @@
                     android:textSize="30sp" />
 
             </LinearLayout>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
     </com.google.android.material.card.MaterialCardView>
 
 </RelativeLayout>

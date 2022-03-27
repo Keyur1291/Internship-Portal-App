@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -110,7 +112,6 @@ public class add_faculty extends AppCompatActivity {
                     userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                     DocumentReference documentReference = fireStore.collection("Users").document(userID);
                     Map<String, Object> user = new HashMap<>();
-                    user.put("id", userID);
                     user.put("name", name);
                     user.put("department", department);
                     user.put("mobile", mobile);
@@ -120,6 +121,7 @@ public class add_faculty extends AppCompatActivity {
 
                     documentReference.set(user).addOnSuccessListener(unused -> Log.d(TAG, "Faculty" + name + "Added Successfully"));
                     startActivity(new Intent(add_faculty.this, admin_home.class));
+                    mAuth.signOut();
                     finish();
                 } else {
                     Toast.makeText(add_faculty.this, "Error: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
