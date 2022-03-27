@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-            <item
-                android:id="@+id/form"
-                android:checkable="true"
-                android:icon="@drawable/ic_baseline_home_24"
-                android:title="@string/apply_for_internship" />
-            <item
-                android:id="@+id/about"
-                android:checkable="true"
-                android:icon="@drawable/ic_baseline_info_24"
-                android:title="@string/about" />
-            <item
-                android:id="@+id/NOC"
-                android:checkable="true"
-                android:icon="@drawable/ic_baseline_article_24"
-                android:title="@string/get_noc_letter" />
+    <group>
+        <item
+            android:id="@+id/home"
+            android:checkable="true"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/NOC"
+            android:checkable="true"
+            android:icon="@drawable/ic_baseline_article_24"
+            android:title="@string/get_noc_letter" />
+        <item
+            android:id="@+id/certi"
+            android:checkable="true"
+            android:icon="@drawable/ic_baseline_article_24"
+            android:title="@string/completion_certi" />
+        <item
+            android:id="@+id/about"
+            android:checkable="true"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="@string/about" />
+
+
+    </group>
 </menu>

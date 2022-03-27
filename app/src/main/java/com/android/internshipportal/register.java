@@ -76,7 +76,7 @@ public class register extends AppCompatActivity {
         });
 
         regFaculty = findViewById(R.id.facultylink);
-        regFaculty.setOnClickListener(v -> {
+        regFaculty.setOnClickListener(View -> {
             startActivity(new Intent(register.this, register_faculty.class));
             finish();
         });

@@ -44,4 +44,9 @@
         <item name="switchStyle">@style/Widget.Material3.CompoundButton.Switch</item>
 
     </style>
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Material3.Button.TonalButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Material3.Button.OutlinedButton</item>
+    </style>
 </resources>
