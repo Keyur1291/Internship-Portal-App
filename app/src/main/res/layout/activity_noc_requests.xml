@@ -22,7 +22,7 @@ tools:context=".noc_requests">
 </com.google.android.material.appbar.AppBarLayout>
 
 <androidx.recyclerview.widget.RecyclerView
-    tools:listitem="@layout/company_list_item"
+    tools:listitem="@layout/students_list_item"
     android:layout_below="@id/topbar"
     android:id="@+id/recycleView"
     android:layout_width="match_parent"

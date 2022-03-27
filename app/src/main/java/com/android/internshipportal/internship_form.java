@@ -1,5 +1,6 @@
 package com.android.internshipportal;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
@@ -11,6 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +32,7 @@ public class internship_form extends AppCompatActivity {
     public static final String TAG = "TAG";
     TextInputLayout cSubject ,cName, cAddress, cMobile, cEmail;
     MaterialButton apply;
+    MaterialToolbar toolbar;
     AutoCompleteTextView autoCompleteTextView;
     ArrayList<String> arrayList;
     ArrayAdapter<String> arrayAdapter;
@@ -41,6 +46,10 @@ public class internship_form extends AppCompatActivity {
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_internship_form);
         CharSequence fieldError = this.getApplicationContext().getText(R.string.field_empty_error);
+
+        toolbar = findViewById(R.id.appbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -108,10 +117,20 @@ public class internship_form extends AppCompatActivity {
             user.put("Cemail", Cemail);
             user.put("formFilled", "1");
 
-            documentReference.set(user, SetOptions.merge()).addOnSuccessListener(unused -> Log.d(TAG, "Internship form filled"));
-            Toast.makeText(internship_form.this, "Form filled", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(internship_form.this, student_home.class));
-            finish();
+            documentReference.set(user, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(internship_form.this, "Form filled", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(internship_form.this, student_home.class));
+                    finish();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(internship_form.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
 
         }
     }

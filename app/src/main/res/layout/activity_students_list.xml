@@ -35,7 +35,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/topbar"
-        android:onClick="userInfo"
         tools:listitem="@layout/students_list_item" />
 
 </RelativeLayout>
