@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".students_list">
+    tools:context=".company_list">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/topbar"
@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="10sp"
                 app:layout_collapseMode="pin"
-                app:title="Registered Students" />
+                app:title="Previous Companies" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -35,6 +35,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/topbar"
-        tools:listitem="@layout/students_list_item" />
+        tools:listitem="@layout/company_list_item" />
 
 </RelativeLayout>

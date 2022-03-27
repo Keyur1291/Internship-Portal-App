@@ -1,14 +1,14 @@
 package com.android.internshipportal;
 
-import android.app.ProgressDialog;
-import android.os.Bundle;
-import android.util.Log;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.firestore.DocumentChange;
@@ -21,12 +21,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class students_list extends AppCompatActivity {
+public class company_list extends AppCompatActivity {
 
     FirebaseFirestore fstore;
     RecyclerView recyclerView;
-    ArrayList<recycle_getter_setter> userArrayList;
-    userAdapter userAdapter;
+    ArrayList<recycle_getter_setter> companyArrayList;
+    companyAdapter companyAdapter;
     ProgressDialog progressDialog;
     MaterialToolbar toolbar;
 
@@ -34,7 +34,7 @@ public class students_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-        setContentView(R.layout.activity_students_list);
+        setContentView(R.layout.activity_company_list);
 
         toolbar = findViewById(R.id.appbar);
         setSupportActionBar(toolbar);
@@ -50,17 +50,17 @@ public class students_list extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         fstore = FirebaseFirestore.getInstance();
-        userArrayList = new ArrayList<recycle_getter_setter>();
-        userAdapter = new userAdapter(students_list.this, userArrayList);
+        companyArrayList = new ArrayList<recycle_getter_setter>();
+        companyAdapter = new companyAdapter(company_list.this, companyArrayList);
 
-        recyclerView.setAdapter(userAdapter);
+        recyclerView.setAdapter(companyAdapter);
 
         fetchData();
     }
 
     private void fetchData() {
 
-        fstore.collection("Users").orderBy("name", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        fstore.collection("Companies").orderBy("Cname", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
@@ -73,9 +73,9 @@ public class students_list extends AppCompatActivity {
 
                 for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
-                        userArrayList.add(dc.getDocument().toObject(recycle_getter_setter.class));
+                        companyArrayList.add(dc.getDocument().toObject(recycle_getter_setter.class));
                     }
-                    userAdapter.notifyDataSetChanged();
+                    companyAdapter.notifyDataSetChanged();
                     if (progressDialog.isShowing())
                         progressDialog.dismiss();
                 }

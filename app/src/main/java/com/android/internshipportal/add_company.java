@@ -12,8 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -27,10 +28,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class internship_form extends AppCompatActivity {
+public class add_company extends AppCompatActivity {
 
-    public static final String TAG = "TAG";
     TextInputLayout cSubject ,cName, cAddress, cMobile, cEmail;
+    public static final String TAG = "TAG";
     MaterialButton apply;
     MaterialToolbar toolbar;
     AutoCompleteTextView autoCompleteTextView;
@@ -38,13 +39,13 @@ public class internship_form extends AppCompatActivity {
     ArrayAdapter<String> arrayAdapter;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
-    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-        setContentView(R.layout.activity_internship_form);
+        setContentView(R.layout.activity_add_company);
+
         CharSequence fieldError = this.getApplicationContext().getText(R.string.field_empty_error);
 
         toolbar = findViewById(R.id.appbar);
@@ -80,11 +81,10 @@ public class internship_form extends AppCompatActivity {
             applyInternship(fieldError);
         });
 
-
-
     }
 
     private void applyInternship(CharSequence fieldError) {
+
         String subject = Objects.requireNonNull(cSubject.getEditText()).getText().toString();
         String Cname = Objects.requireNonNull(cName.getEditText()).getText().toString();
         String Caddress = Objects.requireNonNull(cAddress.getEditText()).getText().toString();
@@ -107,31 +107,27 @@ public class internship_form extends AppCompatActivity {
             cEmail.setError(fieldError);
             cEmail.requestFocus();
         } else {
-            userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-            DocumentReference documentReference = fStore.collection("Users").document(userID);
-            Map<String, Object> user = new HashMap<>();
-            user.put("subject", subject);
-            user.put("Cname", Cname);
-            user.put("Caddress", Caddress);
-            user.put("Cmobile", Cmobile);
-            user.put("Cemail", Cemail);
-            user.put("formFilled", "1");
 
-            documentReference.set(user, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+            Map<String, Object> company = new HashMap<>();
+            company.put("subject", subject);
+            company.put("Cname", Cname);
+            company.put("Caddress", Caddress);
+            company.put("Cmobile", Cmobile);
+            company.put("Cemail", Cemail);
+            fStore.collection("Companies").add(company).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                 @Override
-                public void onSuccess(Void unused) {
-                    Toast.makeText(internship_form.this, "Form filled", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(internship_form.this, student_home.class));
+                public void onComplete(@NonNull Task<DocumentReference> task) {
+                    Toast.makeText(add_company.this, "Company Added", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(add_company.this, admin_home.class));
                     finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(internship_form.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(add_company.this, "Error;" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-
-
         }
+
     }
 }

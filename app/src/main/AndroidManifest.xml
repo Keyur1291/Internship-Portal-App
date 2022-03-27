@@ -14,14 +14,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InternshipPortal">
         <activity
-            android:name=".user_control"
+            android:name=".add_company"
             android:exported="false" />
+        <activity
+            android:name=".add_faculty"
+            android:exported="false"
+            android:parentActivityName=".admin_home" />
+        <activity
+            android:name=".company_list"
+            android:exported="false"
+            android:parentActivityName=".admin_home" />
+        <activity
+            android:name=".profile"
+            android:exported="false"
+            android:parentActivityName=".student_home" />
+        <activity
+            android:name=".add_student"
+            android:exported="false"
+            android:parentActivityName=".admin_home" />
         <activity
             android:name=".internship_form"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".student_home" />
         <activity
             android:name=".noc_requests"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".faculty_home" />
         <activity
             android:name=".register_faculty"
             android:exported="false" />
@@ -37,7 +55,8 @@
             android:parentActivityName=".admin_home" />
         <activity
             android:name=".forgotPassword"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".login" />
         <activity
             android:name=".register"
             android:exported="false" />

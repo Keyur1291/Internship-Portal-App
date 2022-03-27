@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
+import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,16 +29,13 @@ import java.util.Objects;
 public class login extends AppCompatActivity {
 
     MaterialButton logBtn;
-    TextView regLink;
-    TextView forgotPass;
+    MaterialTextView regLink, forgotPass;
     TextInputLayout loginEmail, loginPass;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         CharSequence textFieldError=this.getResources().getString(R.string.field_empty_error);
