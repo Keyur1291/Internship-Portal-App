@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center"
-    android:id="@+id/company_details"
     tools:context=".company_details">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="@style/Widget.Material3.CollapsingToolbar.Large"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/collapsingToolbarLayoutMediumSize">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/appbar"
+                style="@style/Widget.Material3.AppBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10sp"
+                app:title="@string/previous_company_details" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/companydtls"
         style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="358sp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        app:cardCornerRadius="30sp" >
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="30sp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,12 +54,12 @@
                     android:src="@drawable/ic_baseline_domain_24" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:textStyle="bold"
-                    android:textSize="30sp"
                     android:id="@+id/companyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/company_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -51,18 +69,18 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="@string/area_of_interest" />
+                    android:text="@string/area_of_interest"
+                    android:textSize="30sp" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:textSize="20sp"
                     android:id="@+id/subject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/subject"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -72,18 +90,18 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="@string/company_address" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:textSize="20sp"
-                    android:id="@+id/companyAddress"
                     android:text="@string/company_address"
+                    android:textSize="30sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/companyAddress"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="@string/company_address"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -93,18 +111,18 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="@string/contact_no" />
+                    android:text="@string/contact_no"
+                    android:textSize="30sp" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:textSize="20sp"
                     android:id="@+id/companyMobile"
-                    android:text="@string/mobile_no"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="@string/mobile_no"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -114,33 +132,23 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="@string/company_email" />
+                    android:text="@string/company_email"
+                    android:textSize="30sp" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:textSize="20sp"
                     android:id="@+id/companyEmail"
-                    android:text="@string/email"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/editprofilebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/companydtls"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20sp"
-        android:text="@string/edit_company_details"
-        app:elevation="10sp" />
 
 </RelativeLayout>
