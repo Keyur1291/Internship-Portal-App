@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".internship_form">
+    tools:context=".add_faculty">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/topbar"
@@ -14,7 +14,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             style="@style/Widget.Material3.CollapsingToolbar.Large"
             android:layout_width="match_parent"
-            android:layout_height="?attr/collapsingToolbarLayoutMediumSize">
+            android:layout_height="?attr/collapsingToolbarLayoutLargeSize">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/appbar"
@@ -22,16 +22,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10sp"
-                app:title="Apply For Internship" />
+                app:title="@string/add_faculty" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <com.google.android.material.card.MaterialCardView
-        android:layout_below="@id/topbar"
-        android:layout_marginTop="20sp"
-        android:layout_marginHorizontal="10sp"
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10sp"
         app:strokeWidth="0sp">
 
         <androidx.core.widget.NestedScrollView
@@ -39,33 +39,20 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/areaOfInterest"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:id="@+id/reg_namef"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/area_of_interest"
+                    android:hint="@string/name"
                     app:boxCornerRadiusTopEnd="15sp"
-                    app:boxCornerRadiusTopStart="15sp">
-
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:id="@+id/area"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textAutoComplete" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/comp_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/company_name"
-                    app:endIconMode="clear_text">
+                    app:boxCornerRadiusTopStart="15sp"
+                    app:endIconMode="clear_text"
+                    app:startIconDrawable="@drawable/ic_baseline_person_24">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -74,26 +61,29 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/comp_address"
+                    android:id="@+id/dmenuf"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/company_address"
-                    app:endIconMode="clear_text">
+                    android:hint="@string/department"
+                    app:startIconDrawable="@drawable/ic_baseline_domain_24">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/departmentf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPostalAddress" />
+                        android:inputType="textAutoComplete" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/comp_mobile_no"
+                    android:id="@+id/reg_mobile_nof"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/contact_no"
+                    android:hint="@string/mobile_no"
                     app:counterEnabled="true"
                     app:counterMaxLength="10"
-                    app:endIconMode="clear_text">
+                    app:endIconMode="clear_text"
+                    app:startIconDrawable="@drawable/ic_baseline_phone_24">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -102,12 +92,10 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/comp_email"
+                    android:id="@+id/reg_emailf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/company_email"
-                    app:boxCornerRadiusBottomEnd="15sp"
-                    app:boxCornerRadiusBottomStart="15sp"
+                    android:hint="@string/email"
                     app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_mail_24">
 
@@ -117,17 +105,34 @@
                         android:inputType="textEmailAddress" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/reg_paswordf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    app:passwordToggleEnabled="true"
+                    app:boxCornerRadiusBottomEnd="15sp"
+                    app:boxCornerRadiusBottomStart="15sp"
+                    app:startIconDrawable="@drawable/ic_baseline_lock_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/applyBtn"
+                    android:id="@+id/regibtnf"
                     style="@style/Widget.Material3.Button.TonalButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="64sp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:text="@string/apply_now"
+                    android:text="@string/add_faculty"
                     android:textSize="30sp" />
 
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+
     </com.google.android.material.card.MaterialCardView>
 
 </RelativeLayout>

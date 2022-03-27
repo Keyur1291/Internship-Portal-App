@@ -55,4 +55,13 @@
     <string name="download">Download</string>
     <string name="text">Text</string>
     <string name="info_text">Internship Portal App is based on Google\'s latest Material Design language named Material You(Material Design 3). It also supports Google\'s latest theming engine named Monet Theme Engine.</string>
+    <string name="manage_users">Manage Users</string>
+    <string name="add_company_details">Add Company Details</string>
+    <string name="registered_users">Registered Users</string>
+    <string name="add_student">Add Student</string>
+    <string name="add_faculty">Add Faculty</string>
+    <string name="add_company">Add Company</string>
+    <string name="current_registered_users">Current Registered Users:</string>
+    <string name="total_added_companies">Total Added Companies:</string>
+    <string name="users">Users</string>
 </resources>

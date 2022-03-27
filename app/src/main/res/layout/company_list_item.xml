@@ -16,8 +16,8 @@ app:cardCornerRadius="20sp">
     android:orientation="horizontal">
 
     <ImageView
-        android:layout_width="84sp"
-        android:layout_height="84sp"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
         android:src="@drawable/ic_baseline_domain_24" />
 
     <LinearLayout
@@ -30,25 +30,35 @@ app:cardCornerRadius="20sp">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/name"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
         <TextView
+            android:textSize="20sp"
             android:id="@+id/cAoi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/area_of_interest" />
 
         <TextView
+            android:textSize="20sp"
             android:id="@+id/cAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/company_address" />
 
         <TextView
+            android:textSize="20sp"
             android:id="@+id/cMobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/contact_no" />
+
+        <TextView
+            android:textSize="20sp"
+            android:id="@+id/cEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/company_email" />
 
     </LinearLayout>
 

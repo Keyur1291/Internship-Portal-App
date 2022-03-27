@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".internship_form">
+    tools:context=".add_company">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/topbar"
@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10sp"
-                app:title="Apply For Internship" />
+                app:title="Add Company Details" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -123,7 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="64sp"
                     android:layout_marginTop="20sp"
-                    android:text="@string/apply_now"
+                    android:text="@string/add_company"
                     android:textSize="30sp" />
 
             </LinearLayout>
