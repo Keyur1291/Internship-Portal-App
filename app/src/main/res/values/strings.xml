@@ -64,4 +64,17 @@
     <string name="current_registered_users">Current Registered Users:</string>
     <string name="total_added_companies">Total Added Companies:</string>
     <string name="users">Users</string>
+    <string name="edit">Edit</string>
+    <string name="enrollment">Enrollment:</string>
+    <string name="department1">Department:</string>
+    <string name="email1">Email:</string>
+    <string name="mobile1">Mobile:</string>
+    <string name="subject1">Subject:</string>
+    <string name="address1">Address:</string>
+    <string name="home">Home</string>
+    <string name="completion_certi">Completion Certi</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="upload">Upload</string>
+    <string name="delete_profile">Delete profile</string>
 </resources>
