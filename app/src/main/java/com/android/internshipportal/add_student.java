@@ -1,6 +1,7 @@
 package com.android.internshipportal;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +12,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -23,12 +24,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class register_faculty extends AppCompatActivity {
+public class add_student extends AppCompatActivity {
 
     public static final String TAG = "TAG";
     MaterialButton regBtn;
-    MaterialTextView logLink, regStudent;
-    TextInputLayout regDepartment, regName, regMobile, regPass, regConf_pass, regEmail;
+    MaterialToolbar toolbar;
+    TextInputLayout regDepartment, regName, regMobile, regPass, regEn_no, regEmail;
     AutoCompleteTextView autoCompleteTextView;
     ArrayList<String> arrayList;
     ArrayAdapter<String> arrayAdapter;
@@ -39,18 +40,24 @@ public class register_faculty extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_faculty);
-        CharSequence fieldError=this.getApplicationContext().getText(R.string.field_empty_error);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        setContentView(R.layout.activity_add_student);
+
+        CharSequence fieldError = this.getApplicationContext().getText(R.string.field_empty_error);
+
+        toolbar = findViewById(R.id.appbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
         fireStore = FirebaseFirestore.getInstance();
-        regName = findViewById(R.id.reg_namef);
-        regDepartment = findViewById(R.id.dmenuf);
-        regMobile = findViewById(R.id.reg_mobile_nof);
-        regEmail = findViewById(R.id.reg_emailf);
-        regPass = findViewById(R.id.reg_paswordf);
-        regConf_pass = findViewById(R.id.reg_conf_passwordf);
-        autoCompleteTextView = findViewById(R.id.departmentf);
+        regName = findViewById(R.id.reg_name);
+        regEn_no = findViewById(R.id.reg_en_no);
+        regDepartment = findViewById(R.id.dmenu);
+        regMobile = findViewById(R.id.reg_mobile_no);
+        regEmail = findViewById(R.id.reg_email);
+        regPass = findViewById(R.id.reg_pasword);
+        autoCompleteTextView = findViewById(R.id.department);
 
         arrayList = new ArrayList<>();
         arrayList.add("Information Technology");
@@ -65,35 +72,28 @@ public class register_faculty extends AppCompatActivity {
 
         autoCompleteTextView.setThreshold(1);
 
-        regBtn = findViewById(R.id.regibtnf);
+        regBtn = findViewById(R.id.regibtn);
         regBtn.setOnClickListener(v -> createUser(fieldError));
 
-        logLink =  findViewById(R.id.loginlinkf);
-        logLink.setOnClickListener(v -> {
-            Intent intent = new Intent(register_faculty.this, login.class);
-            startActivity(intent);
-            finish();
-        });
-
-        regStudent = findViewById(R.id.studentlink);
-        regStudent.setOnClickListener(v -> {
-            Intent intent = new Intent(register_faculty.this, register.class);
-            startActivity(intent);
-            finish();
-        });
     }
 
     private void createUser(CharSequence fieldError) {
         String name = Objects.requireNonNull(regName.getEditText()).getText().toString();
+        String enrollment = Objects.requireNonNull(regEn_no.getEditText()).getText().toString();
         String department = Objects.requireNonNull(regDepartment.getEditText()).getText().toString();
         String mobile = Objects.requireNonNull(regMobile.getEditText()).getText().toString();
         String email = Objects.requireNonNull(regEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(regPass.getEditText()).getText().toString();
-        String confirmPassword = Objects.requireNonNull(regConf_pass.getEditText()).getText().toString();
 
         if (TextUtils.isEmpty(name)) {
             regName.setError(fieldError);
             regName.requestFocus();
+        } else if (TextUtils.isEmpty(enrollment)) {
+            regEn_no.setError(fieldError);
+            regEn_no.requestFocus();
+        } else if (enrollment.length() > 15) {
+            regEn_no.setError("Enrollment number should not be longer than 15 digits");
+            regEn_no.requestFocus();
         } else if (TextUtils.isEmpty(department)) {
             regDepartment.setError(fieldError);
             regDepartment.requestFocus();
@@ -112,35 +112,29 @@ public class register_faculty extends AppCompatActivity {
         } else if (password.length() < 6) {
             regPass.setError("Password should be more longer");
             regPass.requestFocus();
-        } else if (TextUtils.isEmpty(confirmPassword)) {
-            regConf_pass.setError("Please confirm your password");
-            regConf_pass.requestFocus();
-        }
-        else if (!confirmPassword.equals(password)) {
-            regConf_pass.setError("Confirm password does not match to password");
-            regConf_pass.requestFocus();
         } else {
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    Toast.makeText(register_faculty.this, "User registered successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(add_student.this, "Student Added successfully", Toast.LENGTH_SHORT).show();
                     userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                     DocumentReference documentReference = fireStore.collection("Users").document(userID);
                     Map<String, Object> user = new HashMap<>();
                     user.put("name", name);
+                    user.put("enrollment", enrollment);
                     user.put("department", department);
                     user.put("mobile", mobile);
                     user.put("email", email);
                     user.put("password", password);
-                    user.put("isFaculty", "1");
+                    user.put("isStudent", "1");
 
-                    documentReference.set(user).addOnSuccessListener(unused -> Log.d(TAG, "onSuccess: User profile is created for " + name));
-                    startActivity(new Intent(register_faculty.this, login.class));
+                    documentReference.set(user).addOnSuccessListener(unused -> Log.d(TAG, "Student" + name + "Added Successfully"));
+                    startActivity(new Intent(add_student.this, admin_home.class));
+                    mAuth.signOut();
                     finish();
                 } else {
-                    Toast.makeText(register_faculty.this, "Registration Error: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(add_student.this, "Error: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
     }
-
 }

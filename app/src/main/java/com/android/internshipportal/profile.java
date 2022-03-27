@@ -1,16 +1,17 @@
 package com.android.internshipportal;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -21,36 +22,27 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.Objects;
 
-public class profile extends Fragment {
+public class profile extends AppCompatActivity {
 
     MaterialTextView pname, pmobile, pdepartment, pemail;
+    MaterialToolbar toolbar;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
-    private onFragmentSelected listener;
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        Button editProfile = view.findViewById(R.id.editprofilebtn);
-        editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onButtonSelected();
-            }
-        });
-        return view;
-    }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile);
 
-        pname = view.findViewById(R.id.profileName);
-        pdepartment = view.findViewById(R.id.profileDepartment);
-        pmobile = view.findViewById(R.id.profileMobileNumber);
-        pemail = view.findViewById(R.id.profileEmail);
+        toolbar = findViewById(R.id.appbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        pname = findViewById(R.id.profileName);
+        pdepartment = findViewById(R.id.profileDepartment);
+        pmobile = findViewById(R.id.profileMobileNumber);
+        pemail = findViewById(R.id.profileEmail);
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -58,33 +50,22 @@ public class profile extends Fragment {
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
 
         DocumentReference documentReference = fStore.collection("Users").document(userID);
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                assert value != null;
-                pname.setText(value.getString("name"));
-                pdepartment.setText(value.getString("department"));
-                pmobile.setText(value.getString("mobile"));
-                pemail.setText(value.getString("email"));
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    pname.setText(documentSnapshot.getString("name"));
+                    pdepartment.setText(documentSnapshot.getString("department"));
+                    pmobile.setText(documentSnapshot.getString("mobile"));
+                    pemail.setText(documentSnapshot.getString("email"));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(profile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
     }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if (context instanceof onFragmentSelected) {
-            listener = (onFragmentSelected) context;
-        } else {
-            throw new ClassCastException(context.toString() + "must implement listener");
-        }
-
-    }
-
-    public interface onFragmentSelected {
-        public void onButtonSelected();
-    }
-
-
 }

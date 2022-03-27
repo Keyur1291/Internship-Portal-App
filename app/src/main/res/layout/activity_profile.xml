@@ -4,16 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/profile"
+
     tools:context=".profile">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="@style/Widget.Material3.CollapsingToolbar.Large"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/collapsingToolbarLayoutMediumSize">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/appbar"
+                style="@style/Widget.Material3.AppBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10sp"
+                app:title="@string/profile" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <com.google.android.material.card.MaterialCardView
+        android:layout_centerInParent="true"
         android:id="@+id/profileview"
         style="@style/Widget.Material3.CardView.Filled"
-        android:layout_width="358sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="10sp"
         app:cardCornerRadius="30sp" >
 
         <LinearLayout
@@ -119,6 +141,5 @@
         android:layout_marginTop="20sp"
         android:text="@string/edit_profile"
         app:elevation="10sp" />
-
 
 </RelativeLayout>
