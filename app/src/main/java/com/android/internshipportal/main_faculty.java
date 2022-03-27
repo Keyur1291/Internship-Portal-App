@@ -22,10 +22,14 @@ public class main_faculty extends Fragment {
         MaterialCardView profile, requests;
 
         profile = view.findViewById(R.id.profilebtn);
-        profile.setOnClickListener(View -> startActivity(new Intent(requireActivity().getApplicationContext(), com.android.internshipportal.profile.class)));
+        profile.setOnClickListener(View -> {
+            startActivity(new Intent(getActivity().getApplicationContext(), com.android.internshipportal.profile.class));
+        });
 
         requests = view.findViewById(R.id.nocrqsts);
-        requests.setOnClickListener(View -> startActivity(new Intent(requireActivity().getApplicationContext(), noc_requests.class)));
+        requests.setOnClickListener(View -> {
+            startActivity(new Intent(getActivity().getApplicationContext(), com.android.internshipportal.noc_requests.class));
+        });
 
         return view;
     }

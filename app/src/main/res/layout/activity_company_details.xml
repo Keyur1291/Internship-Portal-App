@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10sp"
-                app:title="@string/applied_internship_details" />
+                app:title="@string/previous_company_details" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

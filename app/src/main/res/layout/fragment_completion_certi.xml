@@ -18,13 +18,11 @@
         <ImageView
             android:id="@+id/Nocimg"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/todo" />
+            android:layout_height="match_parent" />
 
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nocview"

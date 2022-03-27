@@ -1,67 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-style="@style/Widget.Material3.CardView.Elevated"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_marginHorizontal="10sp"
-android:layout_marginTop="5sp"
-android:layout_marginBottom="5sp"
-app:cardCornerRadius="20sp">
-
-<LinearLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10sp"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="100sp"
-        android:layout_height="100sp"
-        android:src="@drawable/ic_baseline_domain_24" />
-
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginHorizontal="10sp"
+        android:layout_marginTop="5sp"
+        android:layout_marginBottom="5sp"
+        app:cardCornerRadius="20sp">
 
-        <TextView
-            android:id="@+id/cName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/name"
-            android:textSize="24sp" />
+            android:orientation="vertical"
+            android:paddingHorizontal="10sp">
 
-        <TextView
-            android:textSize="20sp"
-            android:id="@+id/cAoi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/area_of_interest" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:textSize="20sp"
-            android:id="@+id/cAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/company_address" />
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="84sp"
+                    android:layout_height="84sp"
+                    android:src="@drawable/ic_baseline_domain_24" />
 
-        <TextView
-            android:textSize="20sp"
-            android:id="@+id/cMobile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/contact_no" />
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/img"
+                    android:id="@+id/cName"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="34sp" />
 
-        <TextView
-            android:textSize="20sp"
-            android:id="@+id/cEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/company_email" />
 
-    </LinearLayout>
+            </RelativeLayout>
 
-</LinearLayout>
+            <LinearLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10sp"
+                android:orientation="vertical">
 
-</com.google.android.material.card.MaterialCardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subject1"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/cAoi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subject"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/address1"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/cAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/company_address"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email1"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/cEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mobile1"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/cMobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mobile_no"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

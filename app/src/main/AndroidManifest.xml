@@ -14,8 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InternshipPortal">
         <activity
+            android:name=".edit_profile"
+            android:exported="false"
+            android:parentActivityName=".profile"/>
+        <activity
+            android:name=".company_details"
+            android:exported="false"
+            android:parentActivityName=".student_home"/>
+        <activity
             android:name=".add_company"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".admin_home"/>
         <activity
             android:name=".add_faculty"
             android:exported="false"
