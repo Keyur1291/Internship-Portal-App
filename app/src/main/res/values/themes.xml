@@ -48,5 +48,6 @@
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="buttonBarPositiveButtonStyle">@style/Widget.Material3.Button.TonalButton</item>
         <item name="buttonBarNegativeButtonStyle">@style/Widget.Material3.Button.OutlinedButton</item>
+        <item name="android:textAlignment">center</item>
     </style>
 </resources>

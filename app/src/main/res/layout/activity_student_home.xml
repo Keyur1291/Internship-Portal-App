@@ -33,11 +33,18 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
+        <ScrollView
+            android:layout_below="@id/topbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/topbar" />
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+
+        </ScrollView>
 
     </RelativeLayout>
 
