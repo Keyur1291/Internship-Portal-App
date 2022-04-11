@@ -86,6 +86,7 @@ public class profile extends AppCompatActivity {
         delete.setOnClickListener(v -> {
             MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(profile.this, R.style.ThemeOverlay_App_MaterialAlertDialog);
             dialogBuilder.setTitle("Delete Profile");
+            dialogBuilder.setIcon(R.drawable.ic_baseline_delete_forever_24);
             dialogBuilder.setMessage("Are you sure want to delete your profile? this action can't be reverted.");
             dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override

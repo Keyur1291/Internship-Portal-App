@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingHorizontal="10sp"
+    android:paddingVertical="10sp"
     tools:context=".main_student">
-
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/profilebtn"
         style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="match_parent"
         android:layout_height="100sp"
-        android:layout_margin="20sp"
+        android:layout_marginBottom="10sp"
         app:cardCornerRadius="20sp">
 
         <LinearLayout
@@ -43,8 +44,8 @@
         android:id="@+id/applyinternship"
         style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="match_parent"
+        android:layout_marginBottom="10sp"
         android:layout_height="100sp"
-        android:layout_margin="20sp"
         app:cardCornerRadius="20sp">
 
         <LinearLayout
@@ -75,7 +76,7 @@
         style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="match_parent"
         android:layout_height="100sp"
-        android:layout_margin="20sp"
+        android:layout_marginBottom="10sp"
         app:cardCornerRadius="20sp">
 
         <LinearLayout
@@ -93,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@string/company_details"
+                android:text="@string/applied_internship_details"
                 android:textAlignment="viewStart"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -107,7 +108,6 @@
         style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="match_parent"
         android:layout_height="100sp"
-        android:layout_margin="20sp"
         app:cardCornerRadius="20sp">
 
         <LinearLayout

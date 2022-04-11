@@ -3,14 +3,21 @@ package com.android.internshipportal;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,6 +33,7 @@ public class students_list extends AppCompatActivity {
     FirebaseFirestore fstore;
     RecyclerView recyclerView;
     ArrayList<recycle_getter_setter> userArrayList;
+    MaterialButton delete;
     userAdapter userAdapter;
     ProgressDialog progressDialog;
     MaterialToolbar toolbar;
@@ -83,4 +91,6 @@ public class students_list extends AppCompatActivity {
         });
 
     }
+
+
 }

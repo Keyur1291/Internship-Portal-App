@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 public class nocAdapter extends RecyclerView.Adapter<nocAdapter.myViewHolder> {
 
-    final Context context;
-    final ArrayList<recycle_getter_setter> nocArrayList;
+    Context context;
+    ArrayList<recycle_getter_setter> nocArrayList;
 
     public nocAdapter(Context context, ArrayList<recycle_getter_setter> nocArrayList) {
         this.context = context;
@@ -53,14 +53,7 @@ public class nocAdapter extends RecyclerView.Adapter<nocAdapter.myViewHolder> {
 
     public static class myViewHolder extends RecyclerView.ViewHolder {
 
-        final MaterialTextView name;
-        final MaterialTextView enrollment;
-        final MaterialTextView department;
-        final MaterialTextView Cmobile;
-        final MaterialTextView Cemail;
-        final MaterialTextView Cname;
-        final MaterialTextView Caddress;
-        final MaterialTextView subject;
+        MaterialTextView name, enrollment, department, Cmobile, Cemail, Cname ,Caddress, subject;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);

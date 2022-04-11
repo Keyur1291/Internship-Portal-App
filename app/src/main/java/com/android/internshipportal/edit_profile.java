@@ -36,8 +36,7 @@ import java.util.Objects;
 
 public class edit_profile extends AppCompatActivity {
 
-    public static final String TAG = "TAG";
-    MaterialButton save, delete;
+    MaterialButton save;
     MaterialToolbar toolbar;
     TextInputLayout regDepartment, regName, regMobile, regEn_no, regEmail;
     AutoCompleteTextView autoCompleteTextView;
