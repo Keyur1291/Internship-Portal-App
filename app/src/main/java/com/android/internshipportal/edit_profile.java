@@ -38,7 +38,7 @@ public class edit_profile extends AppCompatActivity {
 
     MaterialButton save;
     MaterialToolbar toolbar;
-    TextInputLayout regDepartment, regName, regMobile, regEn_no, regEmail;
+    TextInputLayout regDepartment, regName, regMobile, regEmail;
     AutoCompleteTextView autoCompleteTextView;
     ArrayList<String> arrayList;
     ArrayAdapter<String> arrayAdapter;
@@ -64,7 +64,6 @@ public class edit_profile extends AppCompatActivity {
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         fStore = FirebaseFirestore.getInstance();
         regName = findViewById(R.id.reg_name);
-        regEn_no = findViewById(R.id.reg_en_no);
         regDepartment = findViewById(R.id.dmenu);
         regMobile = findViewById(R.id.reg_mobile_no);
         regEmail = findViewById(R.id.reg_email);
@@ -95,7 +94,6 @@ public class edit_profile extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
                     regName.getEditText().setText(documentSnapshot.getString("name"));
                     regDepartment.getEditText().setText(documentSnapshot.getString("department"));
-                    regEn_no.getEditText().setText(documentSnapshot.getString("enrollment"));
                     regMobile.getEditText().setText(documentSnapshot.getString("mobile"));
                     regEmail.getEditText().setText(documentSnapshot.getString("email"));
                 }
@@ -112,7 +110,6 @@ public class edit_profile extends AppCompatActivity {
     private void editUser(CharSequence fieldError) {
 
         String name = Objects.requireNonNull(regName.getEditText()).getText().toString();
-        String enrollment = Objects.requireNonNull(regEn_no.getEditText()).getText().toString();
         String department = Objects.requireNonNull(regDepartment.getEditText()).getText().toString();
         String mobile = Objects.requireNonNull(regMobile.getEditText()).getText().toString();
         String email = Objects.requireNonNull(regEmail.getEditText()).getText().toString();
@@ -120,12 +117,6 @@ public class edit_profile extends AppCompatActivity {
         if (TextUtils.isEmpty(name)) {
             regName.setError(fieldError);
             regName.requestFocus();
-        } else if (TextUtils.isEmpty(enrollment)) {
-            regEn_no.setError(fieldError);
-            regEn_no.requestFocus();
-        } else if (enrollment.length() > 15) {
-            regEn_no.setError("Enrollment number should not be longer than 15 digits");
-            regEn_no.requestFocus();
         } else if (TextUtils.isEmpty(department)) {
             regDepartment.setError(fieldError);
             regDepartment.requestFocus();
@@ -142,7 +133,6 @@ public class edit_profile extends AppCompatActivity {
             DocumentReference documentReference = fStore.collection("Users").document(userID);
             Map<String, Object> user = new HashMap<>();
             user.put("name", name);
-            user.put("enrollment", enrollment);
             user.put("department", department);
             user.put("mobile", mobile);
             user.put("email", email);
