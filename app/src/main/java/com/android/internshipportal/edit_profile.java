@@ -65,6 +65,7 @@ public class edit_profile extends AppCompatActivity {
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         fStore = FirebaseFirestore.getInstance();
         regName = findViewById(R.id.reg_name);
+        regEn_no = findViewById(R.id.reg_en_no);
         regDepartment = findViewById(R.id.dmenu);
         regMobile = findViewById(R.id.reg_mobile_no);
         regEmail = findViewById(R.id.reg_email);
@@ -87,6 +88,26 @@ public class edit_profile extends AppCompatActivity {
         save.setOnClickListener(v -> {
             save.setOnClickListener(View -> editUser(fieldError));
         });
+
+        DocumentReference documentReference = fStore.collection("Users").document(userID);
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    regName.getEditText().setText(documentSnapshot.getString("name"));
+                    regDepartment.getEditText().setText(documentSnapshot.getString("department"));
+                    regEn_no.getEditText().setText(documentSnapshot.getString("enrollment"));
+                    regMobile.getEditText().setText(documentSnapshot.getString("mobile"));
+                    regEmail.getEditText().setText(documentSnapshot.getString("email"));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(edit_profile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void editUser(CharSequence fieldError) {
