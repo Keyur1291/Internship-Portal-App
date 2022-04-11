@@ -17,7 +17,7 @@
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_add_company.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_add_faculty.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_add_student.xml" value="0.176" />
-        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_admin_home.xml" value="0.24864130434782608" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_admin_home.xml" value="0.264" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_company_details.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_company_list.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_edit_profile.xml" value="0.20512820512820512" />
@@ -53,6 +53,7 @@
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_profileview.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/header_layout.xml" value="0.264" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/list_item.xml" value="0.25" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/noc_list_item.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/students_list_item.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/tool_bar.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/menu/bottom_nav.xml" value="0.20253164556962025" />

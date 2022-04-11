@@ -50,7 +50,7 @@ public class company_details extends AppCompatActivity {
 
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
 
-        DocumentReference documentReference = fStore.collection("Companies").document(userID);
+        DocumentReference documentReference = fStore.collection("Users").document(userID);
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {

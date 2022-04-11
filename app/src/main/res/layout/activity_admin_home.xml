@@ -26,184 +26,182 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ScrollView
         android:layout_below="@id/topbar"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/usersbtn"
-            style="@style/Widget.Material3.CardView.Elevated"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100sp"
-            android:layout_marginHorizontal="20sp"
-            android:layout_marginTop="20sp"
-            android:layout_marginBottom="10sp"
-            app:cardCornerRadius="20sp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="10sp"
+            android:paddingVertical="10sp">
 
-            <LinearLayout
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/usersbtn"
+                style="@style/Widget.Material3.CardView.Elevated"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="100sp"
+                android:layout_marginBottom="10sp"
+                app:cardCornerRadius="20sp">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="84sp"
-                    android:layout_height="84sp"
-                    android:src="@drawable/ic_baseline_person_24" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/registered_users"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="84sp"
+                        android:layout_height="84sp"
+                        android:src="@drawable/ic_baseline_person_24" />
 
-        </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/registered_users"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/companybtn"
-            style="@style/Widget.Material3.CardView.Elevated"
-            android:layout_width="match_parent"
-            android:layout_height="100sp"
-            android:layout_marginHorizontal="20sp"
-            android:layout_marginBottom="5sp"
-            app:cardCornerRadius="20sp">
+                </LinearLayout>
 
-            <LinearLayout
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/companybtn"
+                style="@style/Widget.Material3.CardView.Elevated"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="100sp"
+                android:layout_marginBottom="10sp"
+                app:cardCornerRadius="20sp">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="84sp"
-                    android:layout_height="84sp"
-                    android:src="@drawable/ic_baseline_domain_24" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="start"
-                    android:text="@string/previous_company_details"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="84sp"
+                        android:layout_height="84sp"
+                        android:src="@drawable/ic_baseline_domain_24" />
 
-        </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="start"
+                        android:text="@string/previous_company_details"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/addstudent"
-            style="@style/Widget.Material3.CardView.Elevated"
-            android:layout_width="match_parent"
-            android:layout_height="100sp"
-            android:layout_marginHorizontal="20sp"
-            android:layout_marginVertical="5sp"
-            app:cardCornerRadius="20sp">
+                </LinearLayout>
 
-            <LinearLayout
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/addstudent"
+                style="@style/Widget.Material3.CardView.Elevated"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="100sp"
+                android:layout_marginBottom="10sp"
+                app:cardCornerRadius="20sp">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="84sp"
-                    android:layout_height="84sp"
-                    android:src="@drawable/ic_baseline_person_add_24" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/add_student"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="84sp"
+                        android:layout_height="84sp"
+                        android:src="@drawable/ic_baseline_person_add_24" />
 
-        </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/add_student"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/addfaculty"
-            style="@style/Widget.Material3.CardView.Elevated"
-            android:layout_width="match_parent"
-            android:layout_height="100sp"
-            android:layout_marginHorizontal="20sp"
-            android:layout_marginVertical="5sp"
-            app:cardCornerRadius="20sp">
+                </LinearLayout>
 
-            <LinearLayout
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/addfaculty"
+                style="@style/Widget.Material3.CardView.Elevated"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="100sp"
+                android:layout_marginBottom="10sp"
+                app:cardCornerRadius="20sp">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="84sp"
-                    android:layout_height="84sp"
-                    android:src="@drawable/ic_baseline_person_add_24" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/add_faculty"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="84sp"
+                        android:layout_height="84sp"
+                        android:src="@drawable/ic_baseline_person_add_24" />
 
-        </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/add_faculty"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/addcompany"
-            style="@style/Widget.Material3.CardView.Elevated"
-            android:layout_width="match_parent"
-            android:layout_height="100sp"
-            android:layout_marginHorizontal="20sp"
-            android:layout_marginVertical="5sp"
-            app:cardCornerRadius="20sp">
+                </LinearLayout>
 
-            <LinearLayout
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/addcompany"
+                style="@style/Widget.Material3.CardView.Elevated"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="100sp"
+                android:layout_marginBottom="10sp"
+                app:cardCornerRadius="20sp">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="84sp"
-                    android:layout_height="84sp"
-                    android:src="@drawable/ic_baseline_domain_24" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/add_company_details"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="84sp"
+                        android:layout_height="84sp"
+                        android:src="@drawable/ic_baseline_domain_24" />
 
-        </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/add_company_details"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-    </LinearLayout>
+                </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/logOut"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="10sp"
-        android:text="@string/log_out"
-        android:textColor="@color/md_theme_light_error"
-        app:rippleColor="@color/md_theme_light_error"
-        app:strokeColor="@color/md_theme_light_error" />
+            </com.google.android.material.card.MaterialCardView>
 
+            <com.google.android.material.button.MaterialButton
+                android:layout_gravity="center"
+                android:id="@+id/logOut"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/log_out"
+                android:textColor="@color/md_theme_light_error"
+                app:rippleColor="@color/md_theme_light_error"
+                app:strokeColor="@color/md_theme_light_error" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
