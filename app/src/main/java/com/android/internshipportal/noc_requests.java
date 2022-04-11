@@ -25,8 +25,8 @@ public class noc_requests extends AppCompatActivity {
 
     FirebaseFirestore fstore;
     RecyclerView recyclerView;
-    ArrayList<recycle_getter_setter> userArrayList;
-    userAdapter userAdapter;
+    ArrayList<recycle_getter_setter> nocArrayList;
+    nocAdapter nocAdapter;
     ProgressDialog progressDialog;
     MaterialToolbar toolbar;
 
@@ -50,10 +50,10 @@ public class noc_requests extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         fstore = FirebaseFirestore.getInstance();
-        userArrayList = new ArrayList<recycle_getter_setter>();
-        userAdapter = new userAdapter(noc_requests.this, userArrayList);
+        nocArrayList = new ArrayList<recycle_getter_setter>();
+        nocAdapter = new nocAdapter(noc_requests.this, nocArrayList);
 
-        recyclerView.setAdapter(userAdapter);
+        recyclerView.setAdapter(nocAdapter);
 
         fetchData();
 
@@ -74,9 +74,9 @@ public class noc_requests extends AppCompatActivity {
 
                 for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
-                        userArrayList.add(dc.getDocument().toObject(recycle_getter_setter.class));
+                        nocArrayList.add(dc.getDocument().toObject(recycle_getter_setter.class));
                     }
-                    userAdapter.notifyDataSetChanged();
+                    nocAdapter.notifyDataSetChanged();
                     if (progressDialog.isShowing())
                         progressDialog.dismiss();
                 }

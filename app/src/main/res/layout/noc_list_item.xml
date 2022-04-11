@@ -27,10 +27,10 @@
                     android:id="@+id/img"
                     android:layout_width="84sp"
                     android:layout_height="84sp"
-                    android:src="@drawable/ic_baseline_domain_24" />
+                    android:src="@drawable/ic_baseline_person_24" />
 
                 <TextView
-                    android:id="@+id/cName"
+                    android:id="@+id/lName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -38,8 +38,6 @@
                     android:text="@string/name"
                     android:textSize="34sp"
                     android:textStyle="bold" />
-
-
             </RelativeLayout>
 
             <LinearLayout
@@ -58,11 +56,123 @@
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/enrollment"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/lEnno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/enrollment_no"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/department1"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/lDdept"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/department"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="@string/filled_company_details"
+                    android:textSize="32sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/company_name"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/cName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/company_name"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_no"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/cMobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mobile_no"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email1"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/cEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email1"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="@string/subject1"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/cAoi"
+                        android:id="@+id/subject"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/subject"
@@ -86,49 +196,7 @@
                         android:id="@+id/cAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/company_address"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/email1"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/cEmail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/email"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/mobile1"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/cMobile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/mobile_no"
+                        android:text="@string/address"
                         android:textSize="20sp" />
 
                 </LinearLayout>
