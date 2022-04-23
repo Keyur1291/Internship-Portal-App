@@ -95,6 +95,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
+                    android:text="@string/enrollment_no" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:textSize="20sp"
+                    android:id="@+id/profileEnrollment"
+                    android:text="@string/enrollment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:textSize="30sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20sp"
                     android:text="@string/mobile_no" />
 
                 <com.google.android.material.textview.MaterialTextView

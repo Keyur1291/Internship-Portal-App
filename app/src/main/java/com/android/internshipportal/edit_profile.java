@@ -104,7 +104,6 @@ public class edit_profile extends AppCompatActivity {
                 Toast.makeText(edit_profile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     private void editUser(CharSequence fieldError) {

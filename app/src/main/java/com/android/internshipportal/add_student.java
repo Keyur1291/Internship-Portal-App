@@ -119,6 +119,7 @@ public class add_student extends AppCompatActivity {
                     userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                     DocumentReference documentReference = fireStore.collection("Users").document(userID);
                     Map<String, Object> user = new HashMap<>();
+                    user.put("id", userID);
                     user.put("name", name);
                     user.put("enrollment", enrollment);
                     user.put("department", department);
@@ -129,7 +130,6 @@ public class add_student extends AppCompatActivity {
 
                     documentReference.set(user).addOnSuccessListener(unused -> Log.d(TAG, "Student" + name + "Added Successfully"));
                     startActivity(new Intent(add_student.this, admin_home.class));
-                    mAuth.signOut();
                     finish();
                 } else {
                     Toast.makeText(add_student.this, "Error: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
