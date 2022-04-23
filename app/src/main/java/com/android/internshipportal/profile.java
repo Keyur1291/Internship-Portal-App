@@ -30,7 +30,7 @@ import java.util.Objects;
 
 public class profile extends AppCompatActivity {
 
-    MaterialTextView pname, pmobile, pdepartment, pemail;
+    MaterialTextView pname, penrollment, pmobile, pdepartment, pemail;
     MaterialButton edit, delete;
     MaterialToolbar toolbar;
     FirebaseAuth mAuth;
@@ -49,6 +49,7 @@ public class profile extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         pname = findViewById(R.id.profileName);
+        penrollment = findViewById(R.id.profileEnrollment);
         pdepartment = findViewById(R.id.profileDepartment);
         pmobile = findViewById(R.id.profileMobileNumber);
         pemail = findViewById(R.id.profileEmail);
@@ -70,6 +71,7 @@ public class profile extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
                     pname.setText(documentSnapshot.getString("name"));
+                    penrollment.setText(documentSnapshot.getString("enrollment"));
                     pdepartment.setText(documentSnapshot.getString("department"));
                     pmobile.setText(documentSnapshot.getString("mobile"));
                     pemail.setText(documentSnapshot.getString("email"));

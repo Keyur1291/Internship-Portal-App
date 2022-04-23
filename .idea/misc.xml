@@ -20,8 +20,11 @@
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_admin_home.xml" value="0.24864130434782608" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_company_details.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_company_list.xml" value="0.20512820512820512" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_edit_faculty.xml" value="0.1935897435897436" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_edit_profile.xml" value="0.20512820512820512" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_edit_student.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_faculty_home.xml" value="0.24864130434782608" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_faculty_list.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_internship_form.xml" value="0.20512820512820512" />
@@ -39,6 +42,7 @@
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/company_list_item.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/content.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/department_item.xml" value="0.25" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/faculty_list_item.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_about.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_company_details.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/fragment_completion_certi.xml" value="0.176" />

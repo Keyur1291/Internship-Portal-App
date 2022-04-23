@@ -77,4 +77,12 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="upload">Upload</string>
     <string name="delete_profile">Delete profile</string>
+    <string name="company_details1">Company Details:</string>
+    <string name="company_address1">Company Address:</string>
+    <string name="address">Address</string>
+    <string name="applied_internship_details">Applied Internship Details</string>
+    <string name="filled_company_details">Filled company details:</string>
+    <string name="registered_students">Registered Students</string>
+    <string name="registered_faculties">Registered Faculties</string>
+    <string name="save">Save</string>
 </resources>

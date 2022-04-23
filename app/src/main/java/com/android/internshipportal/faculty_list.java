@@ -1,15 +1,15 @@
 package com.android.internshipportal;
 
-import android.app.ProgressDialog;
-import android.os.Bundle;
-import android.util.Log;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
@@ -23,12 +23,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class students_list extends AppCompatActivity {
+public class faculty_list extends AppCompatActivity {
 
     FirebaseFirestore fstore;
     RecyclerView recyclerView;
     ArrayList<recycle_getter_setter> userArrayList;
-    studentAdapter studentAdapter;
+    facultyAdapter facultyAdapter;
     ProgressDialog progressDialog;
     MaterialToolbar toolbar;
 
@@ -36,7 +36,7 @@ public class students_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-        setContentView(R.layout.activity_students_list);
+        setContentView(R.layout.activity_faculty_list);
 
         toolbar = findViewById(R.id.appbar);
         setSupportActionBar(toolbar);
@@ -53,19 +53,19 @@ public class students_list extends AppCompatActivity {
 
         fstore = FirebaseFirestore.getInstance();
         userArrayList = new ArrayList<recycle_getter_setter>();
-        studentAdapter = new studentAdapter(students_list.this, userArrayList);
+        facultyAdapter = new facultyAdapter(faculty_list.this, userArrayList);
 
-        recyclerView.setAdapter(studentAdapter);
+        recyclerView.setAdapter(facultyAdapter);
 
         fetchData();
 
-        ItemTouchHelper touchHelper = new ItemTouchHelper(new touchHelper(studentAdapter));
-        touchHelper.attachToRecyclerView(recyclerView);
+        ItemTouchHelper touchHelper2 = new ItemTouchHelper(new touchHelper2(facultyAdapter));
+        touchHelper2.attachToRecyclerView(recyclerView);
 
     }
 
     public void fetchData() {
-        fstore.collection("Users").orderBy("isStudent", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        fstore.collection("Users").orderBy("isFaculty", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
@@ -80,7 +80,7 @@ public class students_list extends AppCompatActivity {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
                         userArrayList.add(dc.getDocument().toObject(recycle_getter_setter.class));
                     }
-                    studentAdapter.notifyDataSetChanged();
+                    facultyAdapter.notifyDataSetChanged();
                     if (progressDialog.isShowing())
                         progressDialog.dismiss();
                 }
@@ -88,6 +88,5 @@ public class students_list extends AppCompatActivity {
         });
 
     }
-
 
 }
