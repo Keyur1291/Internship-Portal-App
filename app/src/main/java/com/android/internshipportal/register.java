@@ -131,6 +131,7 @@ public class register extends AppCompatActivity {
                     userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                     DocumentReference documentReference = fireStore.collection("Users").document(userID);
                     Map<String, Object> user = new HashMap<>();
+                    user.put("id", userID);
                     user.put("name", name);
                     user.put("enrollment", enrollment);
                     user.put("department", department);

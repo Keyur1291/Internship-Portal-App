@@ -78,7 +78,12 @@ public class add_company extends AppCompatActivity {
 
         apply = findViewById(R.id.applyBtn);
         apply.setOnClickListener(v -> {
-            applyInternship(fieldError);
+            Bundle bundle1 = getIntent().getExtras();
+            if (bundle1 != null) {
+                applyInternship( fieldError);
+            } else {
+                applyInternship(fieldError);
+            }
         });
 
     }

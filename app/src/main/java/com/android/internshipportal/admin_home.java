@@ -29,8 +29,7 @@ public class admin_home extends AppCompatActivity {
     MaterialButton logout;
     FirebaseAuth mAuth;
     FirebaseFirestore fstore;
-    int ucounter;
-    MaterialCardView users, company, addStudent, addFaculty, addcompany;
+    MaterialCardView users, faculties , company, addStudent, addFaculty, addcompany;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +67,11 @@ public class admin_home extends AppCompatActivity {
         users = findViewById(R.id.usersbtn);
         users.setOnClickListener(View -> {
             startActivity(new Intent(admin_home.this, students_list.class));
+        });
+
+        faculties = findViewById(R.id.fcltysbtn);
+        faculties.setOnClickListener(View -> {
+            startActivity(new Intent(admin_home.this, faculty_list.class));
         });
 
         company = findViewById(R.id.companybtn);

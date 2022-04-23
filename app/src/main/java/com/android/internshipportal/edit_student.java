@@ -4,13 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,13 +17,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -34,24 +29,25 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class edit_profile extends AppCompatActivity {
+public class edit_student extends AppCompatActivity {
 
     MaterialButton save;
     MaterialToolbar toolbar;
-    TextInputLayout regDepartment, regName, regMobile, regEmail;
+    TextInputLayout regDepartment, regEn_no, regName, regMobile, regEmail;
     AutoCompleteTextView autoCompleteTextView;
     ArrayList<String> arrayList;
     ArrayAdapter<String> arrayAdapter;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
+    String uname, uenrollment, uid, udepartment, umobile, uemail;
     FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.activity_edit_student);
 
         CharSequence fieldError = this.getApplicationContext().getText(R.string.field_empty_error);
 
@@ -64,6 +60,7 @@ public class edit_profile extends AppCompatActivity {
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         fStore = FirebaseFirestore.getInstance();
         regName = findViewById(R.id.reg_name);
+        regEn_no = findViewById(R.id.reg_en_no);
         regDepartment = findViewById(R.id.dmenu);
         regMobile = findViewById(R.id.reg_mobile_no);
         regEmail = findViewById(R.id.reg_email);
@@ -82,33 +79,37 @@ public class edit_profile extends AppCompatActivity {
 
         autoCompleteTextView.setThreshold(1);
 
-        save = findViewById(R.id.saveprofilebtn);
-        save.setOnClickListener(v -> {
-            save.setOnClickListener(View -> editUser(fieldError));
-        });
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            uid = bundle.getString("uid");
+            uname = bundle.getString("uname");
+            uenrollment = bundle.getString("uenrollment");
+            udepartment = bundle.getString("udepartment");
+            umobile = bundle.getString("umobile");
+            uemail = bundle.getString("uemail");
+            regName.getEditText().setText(uname);
+            regEn_no.getEditText().setText(uenrollment);
+            regDepartment.getEditText().setText(udepartment);
+            regMobile.getEditText().setText(umobile);
+            regEmail.getEditText().setText(uemail);
+        }
 
-        DocumentReference documentReference = fStore.collection("Users").document(userID);
-        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    regName.getEditText().setText(documentSnapshot.getString("name"));
-                    regDepartment.getEditText().setText(documentSnapshot.getString("department"));
-                    regMobile.getEditText().setText(documentSnapshot.getString("mobile"));
-                    regEmail.getEditText().setText(documentSnapshot.getString("email"));
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(edit_profile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        save = findViewById(R.id.saveprofilebtn);
+        save.setOnClickListener(View -> {
+            Bundle bundle1 = getIntent().getExtras();
+            if (bundle1 != null) {
+                String id = uid;
+                update(id, fieldError);
+            } else {
+                editUser(fieldError);
             }
         });
     }
 
-    private void editUser(CharSequence fieldError) {
+    private void update(String id, CharSequence fieldError) {
 
         String name = Objects.requireNonNull(regName.getEditText()).getText().toString();
+        String enrollment = Objects.requireNonNull(regEn_no.getEditText()).getText().toString();
         String department = Objects.requireNonNull(regDepartment.getEditText()).getText().toString();
         String mobile = Objects.requireNonNull(regMobile.getEditText()).getText().toString();
         String email = Objects.requireNonNull(regEmail.getEditText()).getText().toString();
@@ -125,6 +126,63 @@ public class edit_profile extends AppCompatActivity {
         } else if (mobile.length() > 10) {
             regMobile.setError("Mobile number should not be longer than 10 digits");
             regMobile.requestFocus();
+        } else if (TextUtils.isEmpty(enrollment)) {
+            regEn_no.setError(fieldError);
+            regEn_no.requestFocus();
+        } else if (enrollment.length() > 15) {
+            regEn_no.setError("Enrollment number should not be longer than 15 digits");
+            regEn_no.requestFocus();
+        } else if (TextUtils.isEmpty(email)) {
+            regEmail.setError(fieldError);
+            regEmail.requestFocus();
+        } else {
+
+            fStore.collection("Users").document(id).update(
+                    "name", name,
+                    "enrollment", enrollment,
+                    "department", department,
+                    "mobile", mobile,
+                    "email", email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(edit_student.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(edit_student.this, students_list.class));
+                        finish();
+                    } else {
+                        Toast.makeText(edit_student.this, "Error:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    private void editUser(CharSequence fieldError) {
+
+        String name = Objects.requireNonNull(regName.getEditText()).getText().toString();
+        String enrollment = Objects.requireNonNull(regEn_no.getEditText()).getText().toString();
+        String department = Objects.requireNonNull(regDepartment.getEditText()).getText().toString();
+        String mobile = Objects.requireNonNull(regMobile.getEditText()).getText().toString();
+        String email = Objects.requireNonNull(regEmail.getEditText()).getText().toString();
+
+        if (TextUtils.isEmpty(name)) {
+            regName.setError(fieldError);
+            regName.requestFocus();
+        } else if (TextUtils.isEmpty(department)) {
+            regDepartment.setError(fieldError);
+            regDepartment.requestFocus();
+        } else if (TextUtils.isEmpty(mobile)) {
+            regMobile.setError(fieldError);
+            regMobile.requestFocus();
+        } else if (mobile.length() > 10) {
+            regMobile.setError("Mobile number should not be longer than 10 digits");
+            regMobile.requestFocus();
+        } else if (TextUtils.isEmpty(enrollment)) {
+            regEn_no.setError(fieldError);
+            regEn_no.requestFocus();
+        } else if (enrollment.length() > 15) {
+            regEn_no.setError("Enrollment number should not be longer than 15 digits");
+            regEn_no.requestFocus();
         } else if (TextUtils.isEmpty(email)) {
             regEmail.setError(fieldError);
             regEmail.requestFocus();
@@ -132,6 +190,7 @@ public class edit_profile extends AppCompatActivity {
             DocumentReference documentReference = fStore.collection("Users").document(userID);
             Map<String, Object> user = new HashMap<>();
             user.put("name", name);
+            user.put("enrollment", enrollment);
             user.put("department", department);
             user.put("mobile", mobile);
             user.put("email", email);
@@ -139,18 +198,19 @@ public class edit_profile extends AppCompatActivity {
             documentReference.set(user, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
-                    Toast.makeText(edit_profile.this, "Profile Updated", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(edit_profile.this, profile.class));
+                    Toast.makeText(edit_student.this, "Student Profile Updated", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(edit_student.this, admin_home.class));
                     finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(edit_profile.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(edit_student.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
         }
 
     }
+
 }
