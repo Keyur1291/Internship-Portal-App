@@ -3,21 +3,16 @@ package com.android.internshipportal;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,8 +28,7 @@ public class students_list extends AppCompatActivity {
     FirebaseFirestore fstore;
     RecyclerView recyclerView;
     ArrayList<recycle_getter_setter> userArrayList;
-    MaterialButton delete;
-    userAdapter userAdapter;
+    studentAdapter studentAdapter;
     ProgressDialog progressDialog;
     MaterialToolbar toolbar;
 
@@ -59,16 +53,19 @@ public class students_list extends AppCompatActivity {
 
         fstore = FirebaseFirestore.getInstance();
         userArrayList = new ArrayList<recycle_getter_setter>();
-        userAdapter = new userAdapter(students_list.this, userArrayList);
+        studentAdapter = new studentAdapter(students_list.this, userArrayList);
 
-        recyclerView.setAdapter(userAdapter);
+        recyclerView.setAdapter(studentAdapter);
 
         fetchData();
+
+        ItemTouchHelper touchHelper = new ItemTouchHelper(new touchHelper(studentAdapter));
+        touchHelper.attachToRecyclerView(recyclerView);
+
     }
 
-    private void fetchData() {
-
-        fstore.collection("Users").orderBy("name", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
+    public void fetchData() {
+        fstore.collection("Users").orderBy("isStudent", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
@@ -83,7 +80,7 @@ public class students_list extends AppCompatActivity {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
                         userArrayList.add(dc.getDocument().toObject(recycle_getter_setter.class));
                     }
-                    userAdapter.notifyDataSetChanged();
+                    studentAdapter.notifyDataSetChanged();
                     if (progressDialog.isShowing())
                         progressDialog.dismiss();
                 }

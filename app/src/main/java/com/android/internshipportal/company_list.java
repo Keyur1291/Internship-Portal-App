@@ -3,6 +3,7 @@ package com.android.internshipportal;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,6 +55,9 @@ public class company_list extends AppCompatActivity {
         companyAdapter = new companyAdapter(company_list.this, companyArrayList);
 
         recyclerView.setAdapter(companyAdapter);
+
+        ItemTouchHelper touchHelper3 = new ItemTouchHelper(new touchHelper3(companyAdapter));
+        touchHelper3.attachToRecyclerView(recyclerView);
 
         fetchData();
     }
