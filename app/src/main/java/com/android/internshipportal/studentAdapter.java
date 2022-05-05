@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ public class studentAdapter extends RecyclerView.Adapter<studentAdapter.myViewHo
     Context context;
     ArrayList<recycle_getter_setter> userArrayList;
     FirebaseFirestore fstore = FirebaseFirestore.getInstance();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     public studentAdapter(Context context, ArrayList<recycle_getter_setter> userArrayList) {
         this.context = context;
