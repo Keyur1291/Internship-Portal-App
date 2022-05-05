@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InternshipPortal">
         <activity
+            android:name=".upload_NOC"
+            android:exported="false" />
+        <activity
             android:name=".edit_faculty"
             android:exported="false" />
         <activity

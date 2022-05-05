@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/InternshipPortal/app/src/main/res/drawable-v24/ic_launcher_monochrome.xml" value="0.1555" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/background.xml" value="0.26205128205128203" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/background_round_padded.xml" value="0.26614583333333336" />
         <entry key="..\:/InternshipPortal/app/src/main/res/drawable/borders.xml" value="0.26614583333333336" />
@@ -37,6 +38,7 @@
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_register_faculty.xml" value="0.2" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_student_home.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_students_list.xml" value="0.2" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_upload_noc.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/activity_user_control.xml" value="0.20512820512820512" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/background.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/layout/company_list_item.xml" value="0.20512820512820512" />
@@ -65,6 +67,7 @@
         <entry key="..\:/InternshipPortal/app/src/main/res/menu/nav_menu_student.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/menu/navigation_menu.xml" value="0.25" />
         <entry key="..\:/InternshipPortal/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14322916666666666" />
+        <entry key="..\:/InternshipPortal/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1555" />
         <entry key="..\:/Users/Jainam Shah/Desktop/sml/Internship-Portal-App/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Jainam Shah/Desktop/sml/Internship-Portal-App/app/src/main/res/layout/fragment_home.xml" value="0.10555555555555556" />
       </map>

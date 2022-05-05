@@ -92,7 +92,7 @@ public class profile extends AppCompatActivity {
             dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    firebaseUser.delete();
+                    mAuth.getCurrentUser().delete();
                     Task<Void> documentReference = fStore.collection("Users").document(userID).delete()
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
