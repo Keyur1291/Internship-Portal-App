@@ -1,6 +1,7 @@
 package com.android.internshipportal;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,21 +25,21 @@ import java.util.ArrayList;
 
 public class studentAdapter extends RecyclerView.Adapter<studentAdapter.myViewHolder> {
 
-    Context context;
+    students_list studentsList;
     ArrayList<recycle_getter_setter> userArrayList;
     FirebaseFirestore fstore = FirebaseFirestore.getInstance();
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    public studentAdapter(Context context, ArrayList<recycle_getter_setter> userArrayList) {
-        this.context = context;
+    public studentAdapter(students_list studentsList, ArrayList<recycle_getter_setter> userArrayList) {
         this.userArrayList = userArrayList;
+        this.studentsList = studentsList;
+
     }
 
     @NonNull
     @Override
     public studentAdapter.myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.students_list_item, parent,false);
+        View v = LayoutInflater.from(studentsList).inflate(R.layout.students_list_item, parent,false);
 
         return new myViewHolder(v);
     }
@@ -59,12 +62,53 @@ public class studentAdapter extends RecyclerView.Adapter<studentAdapter.myViewHo
         return userArrayList.size();
     }
 
-    public static class myViewHolder extends RecyclerView.ViewHolder {
+    public class myViewHolder extends RecyclerView.ViewHolder {
 
         MaterialTextView name, enrollment, department, mobile, email;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.findViewById(R.id.editbtn).setOnClickListener(View -> {
+                    MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(studentsList, R.style.ThemeOverlay_App_MaterialAlertDialog);
+                    dialogBuilder.setTitle("Edit Profile");
+                    dialogBuilder.setIcon(R.drawable.ic_baseline_edit_24);
+                    dialogBuilder.setMessage("Are you sure want to edit this profile?");
+                    dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            updateData(getAdapterPosition());
+                            notifyDataSetChanged();
+                        }
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    dialogBuilder.show();
+            });
+
+            itemView.findViewById(R.id.deletbtn).setOnClickListener(View -> {
+                    MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(studentsList, R.style.ThemeOverlay_App_MaterialAlertDialog);
+                    dialogBuilder.setTitle("Delete Profile");
+                    dialogBuilder.setIcon(R.drawable.ic_baseline_delete_forever_24);
+                    dialogBuilder.setMessage("Are you sure want to delete this profile?");
+                    dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            deleteData(getAdapterPosition());
+                            notifyDataSetChanged();
+                        }
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    dialogBuilder.show();
+
+            });
+
             name = itemView.findViewById(R.id.lName);
             enrollment = itemView.findViewById(R.id.lEnno);
             department = itemView.findViewById(R.id.lDdept);
@@ -83,9 +127,9 @@ public class studentAdapter extends RecyclerView.Adapter<studentAdapter.myViewHo
         bundle.putString("udepartment", item.getDepartment());
         bundle.putString("umobile", item.getMobile());
         bundle.putString("uemail", item.getEmail());
-        Intent intent = new Intent(context, edit_student.class);
+        Intent intent = new Intent(studentsList, edit_student.class);
         intent.putExtras(bundle);
-        context.startActivity(intent);
+        studentsList.startActivity(intent);
     }
 
     public void deleteData(int position) {
@@ -94,12 +138,19 @@ public class studentAdapter extends RecyclerView.Adapter<studentAdapter.myViewHo
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(context, "User Deleted!", Toast.LENGTH_SHORT).show();
+                    removed(position);
+                    Toast.makeText(studentsList, "User Deleted!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "Error:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(studentsList, "Error:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    private void removed(int position) {
+        userArrayList.remove(position);
+        notifyItemRemoved(position);
+        studentsList.fetchData();
     }
 
 }

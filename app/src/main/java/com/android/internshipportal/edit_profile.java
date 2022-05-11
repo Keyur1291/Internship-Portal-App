@@ -84,7 +84,7 @@ public class edit_profile extends AppCompatActivity {
 
         save = findViewById(R.id.saveprofilebtn);
         save.setOnClickListener(v -> {
-            save.setOnClickListener(View -> editUser(fieldError));
+            editUser(fieldError);
         });
 
         DocumentReference documentReference = fStore.collection("Users").document(userID);

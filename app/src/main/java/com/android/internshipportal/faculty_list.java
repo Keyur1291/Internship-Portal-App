@@ -59,9 +59,6 @@ public class faculty_list extends AppCompatActivity {
 
         fetchData();
 
-        ItemTouchHelper touchHelper2 = new ItemTouchHelper(new touchHelper2(facultyAdapter));
-        touchHelper2.attachToRecyclerView(recyclerView);
-
     }
 
     public void fetchData() {
