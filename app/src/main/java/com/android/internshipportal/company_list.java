@@ -56,9 +56,6 @@ public class company_list extends AppCompatActivity {
 
         recyclerView.setAdapter(companyAdapter);
 
-        ItemTouchHelper touchHelper3 = new ItemTouchHelper(new touchHelper3(companyAdapter));
-        touchHelper3.attachToRecyclerView(recyclerView);
-
         fetchData();
     }
 

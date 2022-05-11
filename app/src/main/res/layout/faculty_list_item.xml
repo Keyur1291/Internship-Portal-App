@@ -108,6 +108,26 @@
 
         </LinearLayout>
 
+        <RelativeLayout
+            android:layout_margin="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/Feditbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_profile" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_alignParentEnd="true"
+                android:id="@+id/Fdeletbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_profile" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

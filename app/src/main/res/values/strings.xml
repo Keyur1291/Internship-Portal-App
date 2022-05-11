@@ -85,4 +85,6 @@
     <string name="registered_students">Registered Students</string>
     <string name="registered_faculties">Registered Faculties</string>
     <string name="save">Save</string>
+    <string name="delete_company">Delete company</string>
+    <string name="update">Update</string>
 </resources>

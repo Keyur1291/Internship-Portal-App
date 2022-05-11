@@ -72,12 +72,11 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.myViewHo
 
         recycle_getter_setter item = companyArrayList.get(position);
         Bundle bundle = new Bundle();
-        bundle.putString("uid", item.getid());
-        bundle.putString("uname", item.getName());
-        bundle.putString("uenrollment", item.getEnrollment());
-        bundle.putString("udepartment", item.getDepartment());
-        bundle.putString("umobile", item.getMobile());
-        bundle.putString("uemail", item.getEmail());
+        bundle.putString("Cname", item.getCname());
+        bundle.putString("Caddress", item.getCaddress());
+        bundle.putString("Cmobile", item.getCmobile());
+        bundle.putString("Cemail", item.getCemail());
+        bundle.putString("subject", item.getSubject());
         Intent intent = new Intent(context, add_company.class);
         intent.putExtras(bundle);
         context.startActivity(intent);
