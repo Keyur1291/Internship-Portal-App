@@ -1,6 +1,7 @@
 package com.android.internshipportal;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -43,7 +44,7 @@ public class students_list extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
+        progressDialog.setCancelable(true);
         progressDialog.setMessage("Fetching Data...");
         progressDialog.show();
 
@@ -53,14 +54,11 @@ public class students_list extends AppCompatActivity {
 
         fstore = FirebaseFirestore.getInstance();
         userArrayList = new ArrayList<recycle_getter_setter>();
-        studentAdapter = new studentAdapter(students_list.this, userArrayList);
+        studentAdapter = new studentAdapter(this, userArrayList);
 
         recyclerView.setAdapter(studentAdapter);
 
         fetchData();
-
-        ItemTouchHelper touchHelper = new ItemTouchHelper(new touchHelper(studentAdapter));
-        touchHelper.attachToRecyclerView(recyclerView);
 
     }
 

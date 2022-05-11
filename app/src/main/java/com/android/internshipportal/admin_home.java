@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -40,10 +42,24 @@ public class admin_home extends AppCompatActivity {
 
         logout = findViewById(R.id.logOut);
         logout.setOnClickListener(View -> {
-            mAuth.signOut();
-            Toast.makeText(admin_home.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(admin_home.this, login.class));
-            finish();
+            MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(admin_home.this, R.style.ThemeOverlay_App_MaterialAlertDialog);
+            dialogBuilder.setTitle("Logout");
+            dialogBuilder.setMessage("Are you sure want to Logout");
+            dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    mAuth.signOut();
+                    Toast.makeText(admin_home.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(admin_home.this, login.class));
+                    finish();
+                }
+            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            dialogBuilder.show();
         });
 
         toolbar = findViewById(R.id.appbar);
@@ -72,6 +88,7 @@ public class admin_home extends AppCompatActivity {
         addFaculty = findViewById(R.id.addfaculty);
         addFaculty.setOnClickListener(View -> {
             startActivity(new Intent(admin_home.this, add_faculty.class));
+
         });
 
         addcompany = findViewById(R.id.addcompany);
