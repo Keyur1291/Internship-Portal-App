@@ -51,6 +51,7 @@ public class admin_home extends AppCompatActivity {
                     mAuth.signOut();
                     Toast.makeText(admin_home.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(admin_home.this, login.class));
+                    finish();
                 }
             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
@@ -87,6 +88,7 @@ public class admin_home extends AppCompatActivity {
         addFaculty = findViewById(R.id.addfaculty);
         addFaculty.setOnClickListener(View -> {
             startActivity(new Intent(admin_home.this, add_faculty.class));
+
         });
 
         addcompany = findViewById(R.id.addcompany);
