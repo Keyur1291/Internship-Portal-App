@@ -1,27 +1,18 @@
 package com.android.internshipportal;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class admin_home extends AppCompatActivity {
 
@@ -45,20 +36,12 @@ public class admin_home extends AppCompatActivity {
             MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(admin_home.this, R.style.ThemeOverlay_App_MaterialAlertDialog);
             dialogBuilder.setTitle("Logout");
             dialogBuilder.setMessage("Are you sure want to Logout");
-            dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    mAuth.signOut();
-                    Toast.makeText(admin_home.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(admin_home.this, login.class));
-                    finish();
-                }
-            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
+            dialogBuilder.setPositiveButton("Yes", (dialog, which) -> {
+                mAuth.signOut();
+                Toast.makeText(admin_home.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(admin_home.this, login.class));
+                finish();
+            }).setNegativeButton("No", (dialog, which) -> dialog.dismiss());
             dialogBuilder.show();
         });
 
@@ -66,35 +49,22 @@ public class admin_home extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         users = findViewById(R.id.usersbtn);
-        users.setOnClickListener(View -> {
-            startActivity(new Intent(admin_home.this, students_list.class));
-        });
+        users.setOnClickListener(View -> startActivity(new Intent(admin_home.this, students_list.class)));
 
         faculties = findViewById(R.id.fcltysbtn);
-        faculties.setOnClickListener(View -> {
-            startActivity(new Intent(admin_home.this, faculty_list.class));
-        });
+        faculties.setOnClickListener(View -> startActivity(new Intent(admin_home.this, faculty_list.class)));
 
         company = findViewById(R.id.companybtn);
-        company.setOnClickListener(View -> {
-            startActivity(new Intent(admin_home.this, company_list.class));
-        });
+        company.setOnClickListener(View -> startActivity(new Intent(admin_home.this, company_list.class)));
 
         addStudent = findViewById(R.id.addstudent);
-        addStudent.setOnClickListener(View -> {
-            startActivity(new Intent(admin_home.this, add_student.class));
-        });
+        addStudent.setOnClickListener(View -> startActivity(new Intent(admin_home.this, add_student.class)));
 
         addFaculty = findViewById(R.id.addfaculty);
-        addFaculty.setOnClickListener(View -> {
-            startActivity(new Intent(admin_home.this, add_faculty.class));
-
-        });
+        addFaculty.setOnClickListener(View -> startActivity(new Intent(admin_home.this, add_faculty.class)));
 
         addcompany = findViewById(R.id.addcompany);
-        addcompany.setOnClickListener(View -> {
-            startActivity(new Intent(admin_home.this, add_company.class));
-        });
+        addcompany.setOnClickListener(View -> startActivity(new Intent(admin_home.this, add_company.class)));
 
     }
 }

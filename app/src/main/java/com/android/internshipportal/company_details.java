@@ -1,23 +1,16 @@
 package com.android.internshipportal;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.Objects;
 
@@ -51,23 +44,15 @@ public class company_details extends AppCompatActivity {
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
 
         DocumentReference documentReference = fStore.collection("Users").document(userID);
-        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    subject.setText(documentSnapshot.getString("subject"));
-                    cName.setText(documentSnapshot.getString("Cname"));
-                    cAddress.setText(documentSnapshot.getString("Caddress"));
-                    cMobile.setText(documentSnapshot.getString("Cmobile"));
-                    cEmail.setText(documentSnapshot.getString("Cemail"));
-                }
+        documentReference.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                subject.setText(documentSnapshot.getString("subject"));
+                cName.setText(documentSnapshot.getString("Cname"));
+                cAddress.setText(documentSnapshot.getString("Caddress"));
+                cMobile.setText(documentSnapshot.getString("Cmobile"));
+                cEmail.setText(documentSnapshot.getString("Cemail"));
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(company_details.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        }).addOnFailureListener(e -> Toast.makeText(company_details.this, e.getMessage(), Toast.LENGTH_SHORT).show());
 
     }
 }

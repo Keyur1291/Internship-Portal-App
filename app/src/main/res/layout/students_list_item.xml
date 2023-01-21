@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.Material3.CardView.Elevated"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -23,17 +24,19 @@
                 android:id="@+id/img"
                 android:layout_width="84sp"
                 android:layout_height="84sp"
-                android:src="@drawable/ic_baseline_person_24" />
+                android:src="@drawable/ic_baseline_person_24"
+                android:contentDescription="@string/todo" />
 
             <TextView
                 android:id="@+id/lName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/img"
+                android:layout_toEndOf="@id/img"
                 android:text="@string/name"
                 android:textSize="34sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlHardcoded" />
         </RelativeLayout>
 
         <LinearLayout
@@ -141,11 +144,12 @@
                 android:text="@string/edit_profile" />
 
             <com.google.android.material.button.MaterialButton
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:id="@+id/deletbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/delete_user" />
+                android:text="@string/delete_user"
+                tools:ignore="RelativeOverlap,RtlHardcoded" />
 
         </RelativeLayout>
 

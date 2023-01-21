@@ -1,7 +1,5 @@
 package com.android.internshipportal;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,22 +10,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textview.MaterialTextView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class studentAdapter extends RecyclerView.Adapter<studentAdapter.myViewHolder> {
 
-    students_list studentsList;
-    ArrayList<recycle_getter_setter> userArrayList;
-    FirebaseFirestore fstore = FirebaseFirestore.getInstance();
+    final students_list studentsList;
+    final ArrayList<recycle_getter_setter> userArrayList;
+    final FirebaseFirestore fstore = FirebaseFirestore.getInstance();
 
     public studentAdapter(students_list studentsList, ArrayList<recycle_getter_setter> userArrayList) {
         this.userArrayList = userArrayList;
@@ -64,7 +58,11 @@ public class studentAdapter extends RecyclerView.Adapter<studentAdapter.myViewHo
 
     public class myViewHolder extends RecyclerView.ViewHolder {
 
-        MaterialTextView name, enrollment, department, mobile, email;
+        final MaterialTextView name;
+        final MaterialTextView enrollment;
+        final MaterialTextView department;
+        final MaterialTextView mobile;
+        final MaterialTextView email;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,18 +71,10 @@ public class studentAdapter extends RecyclerView.Adapter<studentAdapter.myViewHo
                     dialogBuilder.setTitle("Edit Profile");
                     dialogBuilder.setIcon(R.drawable.ic_baseline_edit_24);
                     dialogBuilder.setMessage("Are you sure want to edit this profile?");
-                    dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            updateData(getAdapterPosition());
-                            notifyDataSetChanged();
-                        }
-                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    });
+                    dialogBuilder.setPositiveButton("Yes", (dialogInterface, i) -> {
+                        updateData(getAdapterPosition());
+                        notifyDataSetChanged();
+                    }).setNegativeButton("No", (dialogInterface, i) -> dialogInterface.dismiss());
                     dialogBuilder.show();
             });
 
@@ -93,18 +83,10 @@ public class studentAdapter extends RecyclerView.Adapter<studentAdapter.myViewHo
                     dialogBuilder.setTitle("Delete Profile");
                     dialogBuilder.setIcon(R.drawable.ic_baseline_delete_forever_24);
                     dialogBuilder.setMessage("Are you sure want to delete this profile?");
-                    dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            deleteData(getAdapterPosition());
-                            notifyDataSetChanged();
-                        }
-                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    });
+                    dialogBuilder.setPositiveButton("Yes", (dialogInterface, i) -> {
+                        deleteData(getAdapterPosition());
+                        notifyDataSetChanged();
+                    }).setNegativeButton("No", (dialogInterface, i) -> dialogInterface.dismiss());
                     dialogBuilder.show();
 
             });
@@ -134,15 +116,12 @@ public class studentAdapter extends RecyclerView.Adapter<studentAdapter.myViewHo
 
     public void deleteData(int position) {
         recycle_getter_setter item = userArrayList.get(position);
-        fstore.collection("Users").document(item.getid()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    removed(position);
-                    Toast.makeText(studentsList, "User Deleted!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(studentsList, "Error:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
+        fstore.collection("Users").document(item.getid()).delete().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                removed(position);
+                Toast.makeText(studentsList, "User Deleted!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(studentsList, "Error:" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

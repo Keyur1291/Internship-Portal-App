@@ -24,7 +24,6 @@ public class completion_certi extends Fragment {
         MaterialButton upload = view.findViewById(R.id.upload);
         upload.setOnClickListener(View -> {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(intent,1000);
         });
 
         ImageView nocimg = view.findViewById(R.id.Nocimg);

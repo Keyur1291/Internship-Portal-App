@@ -22,24 +22,16 @@ public class main_student extends Fragment {
         MaterialCardView profile, company, prevcompany, internship;
 
         profile = view.findViewById(R.id.profilebtn);
-        profile.setOnClickListener(View -> {
-            startActivity(new Intent(getActivity().getApplicationContext(), com.android.internshipportal.profile.class));
-        });
+        profile.setOnClickListener(View -> startActivity(new Intent(requireActivity().getApplicationContext(), com.android.internshipportal.profile.class)));
 
         company = view.findViewById(R.id.companydtls);
-        company.setOnClickListener(View -> {
-            startActivity(new Intent(getActivity().getApplicationContext(), com.android.internshipportal.company_details.class));
-        });
+        company.setOnClickListener(View -> startActivity(new Intent(requireActivity().getApplicationContext(), company_details.class)));
 
         prevcompany = view.findViewById(R.id.prevcompanies);
-        prevcompany.setOnClickListener(View -> {
-            startActivity(new Intent(getActivity().getApplicationContext(), com.android.internshipportal.company_list.class));
-        });
+        prevcompany.setOnClickListener(View -> startActivity(new Intent(requireActivity().getApplicationContext(), company_list.class)));
 
         internship = view.findViewById(R.id.applyinternship);
-        internship.setOnClickListener(View -> {
-            startActivity(new Intent(getActivity().getApplicationContext(), com.android.internshipportal.internship_form.class));
-        });
+        internship.setOnClickListener(View -> startActivity(new Intent(requireActivity().getApplicationContext(), internship_form.class)));
 
         return view;
     }

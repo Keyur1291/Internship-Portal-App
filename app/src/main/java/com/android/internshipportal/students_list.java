@@ -1,25 +1,18 @@
 package com.android.internshipportal;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -53,7 +46,7 @@ public class students_list extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         fstore = FirebaseFirestore.getInstance();
-        userArrayList = new ArrayList<recycle_getter_setter>();
+        userArrayList = new ArrayList<>();
         studentAdapter = new studentAdapter(this, userArrayList);
 
         recyclerView.setAdapter(studentAdapter);
@@ -63,25 +56,22 @@ public class students_list extends AppCompatActivity {
     }
 
     public void fetchData() {
-        fstore.collection("Users").orderBy("isStudent", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+        fstore.collection("Users").orderBy("isStudent", Query.Direction.ASCENDING).addSnapshotListener((value, error) -> {
 
-                if (error != null) {
-                    if (progressDialog.isShowing())
-                        progressDialog.dismiss();
-                    Log.e("Firestore Error", error.getMessage());
-                    return;
-                }
+            if (error != null) {
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
+                Log.e("Firestore Error", error.getMessage());
+                return;
+            }
 
-                for (DocumentChange dc : value.getDocumentChanges()) {
-                    if (dc.getType() == DocumentChange.Type.ADDED) {
-                        userArrayList.add(dc.getDocument().toObject(recycle_getter_setter.class));
-                    }
-                    studentAdapter.notifyDataSetChanged();
-                    if (progressDialog.isShowing())
-                        progressDialog.dismiss();
+            for (DocumentChange dc : Objects.requireNonNull(value).getDocumentChanges()) {
+                if (dc.getType() == DocumentChange.Type.ADDED) {
+                    userArrayList.add(dc.getDocument().toObject(recycle_getter_setter.class));
                 }
+                studentAdapter.notifyDataSetChanged();
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
             }
         });
 
