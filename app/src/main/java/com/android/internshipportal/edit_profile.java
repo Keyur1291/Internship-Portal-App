@@ -1,31 +1,21 @@
 package com.android.internshipportal;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -83,27 +73,17 @@ public class edit_profile extends AppCompatActivity {
         autoCompleteTextView.setThreshold(1);
 
         save = findViewById(R.id.saveprofilebtn);
-        save.setOnClickListener(v -> {
-            editUser(fieldError);
-        });
+        save.setOnClickListener(v -> editUser(fieldError));
 
         DocumentReference documentReference = fStore.collection("Users").document(userID);
-        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    regName.getEditText().setText(documentSnapshot.getString("name"));
-                    regDepartment.getEditText().setText(documentSnapshot.getString("department"));
-                    regMobile.getEditText().setText(documentSnapshot.getString("mobile"));
-                    regEmail.getEditText().setText(documentSnapshot.getString("email"));
-                }
+        documentReference.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                Objects.requireNonNull(regName.getEditText()).setText(documentSnapshot.getString("name"));
+                Objects.requireNonNull(regDepartment.getEditText()).setText(documentSnapshot.getString("department"));
+                Objects.requireNonNull(regMobile.getEditText()).setText(documentSnapshot.getString("mobile"));
+                Objects.requireNonNull(regEmail.getEditText()).setText(documentSnapshot.getString("email"));
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(edit_profile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        }).addOnFailureListener(e -> Toast.makeText(edit_profile.this, e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void editUser(CharSequence fieldError) {
@@ -136,19 +116,11 @@ public class edit_profile extends AppCompatActivity {
             user.put("mobile", mobile);
             user.put("email", email);
 
-            documentReference.set(user, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused) {
-                    Toast.makeText(edit_profile.this, "Profile Updated", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(edit_profile.this, profile.class));
-                    finish();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(edit_profile.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            documentReference.set(user, SetOptions.merge()).addOnSuccessListener(unused -> {
+                Toast.makeText(edit_profile.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(edit_profile.this, profile.class));
+                finish();
+            }).addOnFailureListener(e -> Toast.makeText(edit_profile.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show());
 
         }
 

@@ -1,12 +1,7 @@
 <resources>
     <string name="app_name">Internship Portal</string>
 
-    <string name="openNavDrawer">Navigation Drawer Open</string>
-    <string name="closeNavDrawer">Navigation Drawer Close</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="user_logged_in">User logged in successfully</string>
-    <string name="login_error">Login Error:</string>
     <string name="field_empty_error">Field cannot be empty</string>
     <string name="confirm_password">Confirm your password</string>
     <string name="forgot_password">Forgot Password</string>
@@ -30,18 +25,14 @@
     <string name="sign_in">Sign in</string>
     <string name="apply_for_internship">Apply for internship</string>
     <string name="previous_company_details">Previous company details</string>
-    <string name="upload_completion_certificate">Upload completion certificate</string>
     <string name="profile">Profile</string>
     <string name="area_of_interest">Area of Interest:</string>
     <string name="company_address">Company address</string>
     <string name="company_name">Company name:</string>
     <string name="contact_no">Contact no:</string>
     <string name="company_email">Company email:</string>
-    <string name="edit_company_details">Edit Company Details</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="save_profile">Save Profile</string>
-    <string name="companies">Companies</string>
-    <string name="certificate">Certificate</string>
     <string name="apply_now">Apply Now</string>
     <string name="click_here">Click Here</string>
     <string name="to_register_as_faculty">to register as faculty</string>
@@ -50,21 +41,13 @@
     <string name="about">About</string>
     <string name="get_noc_letter">Get NOC letter</string>
     <string name="delete_user">Delete User</string>
-    <string name="company_details">Company Details</string>
     <string name="subject">Subject</string>
     <string name="download">Download</string>
-    <string name="text">Text</string>
     <string name="info_text">Internship Portal App is based on Google\'s latest Material Design language named Material You(Material Design 3). It also supports Google\'s latest theming engine named Monet Theme Engine.</string>
-    <string name="manage_users">Manage Users</string>
     <string name="add_company_details">Add Company Details</string>
-    <string name="registered_users">Registered Users</string>
     <string name="add_student">Add Student</string>
     <string name="add_faculty">Add Faculty</string>
     <string name="add_company">Add Company</string>
-    <string name="current_registered_users">Current Registered Users:</string>
-    <string name="total_added_companies">Total Added Companies:</string>
-    <string name="users">Users</string>
-    <string name="edit">Edit</string>
     <string name="enrollment">Enrollment:</string>
     <string name="department1">Department:</string>
     <string name="email1">Email:</string>
@@ -73,18 +56,13 @@
     <string name="address1">Address:</string>
     <string name="home">Home</string>
     <string name="completion_certi">Completion Certi</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="upload">Upload</string>
     <string name="delete_profile">Delete profile</string>
-    <string name="company_details1">Company Details:</string>
-    <string name="company_address1">Company Address:</string>
     <string name="address">Address</string>
     <string name="applied_internship_details">Applied Internship Details</string>
     <string name="filled_company_details">Filled company details:</string>
     <string name="registered_students">Registered Students</string>
     <string name="registered_faculties">Registered Faculties</string>
     <string name="save">Save</string>
-    <string name="delete_company">Delete company</string>
-    <string name="update">Update</string>
+    <string name="todo">TODO</string>
 </resources>

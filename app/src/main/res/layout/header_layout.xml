@@ -12,7 +12,8 @@
         android:layout_marginStart="24sp"
         android:layout_marginTop="20sp"
         android:layout_marginEnd="5sp"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/title"

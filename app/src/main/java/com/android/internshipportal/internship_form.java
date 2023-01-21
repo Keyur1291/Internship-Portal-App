@@ -1,19 +1,15 @@
 package com.android.internshipportal;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -76,9 +72,7 @@ public class internship_form extends AppCompatActivity {
         autoCompleteTextView.setThreshold(1);
 
         apply = findViewById(R.id.applyBtn);
-        apply.setOnClickListener(v -> {
-            applyInternship(fieldError);
-        });
+        apply.setOnClickListener(v -> applyInternship(fieldError));
 
 
 
@@ -117,19 +111,11 @@ public class internship_form extends AppCompatActivity {
             user.put("Cemail", Cemail);
             user.put("formFilled", "1");
 
-            documentReference.set(user, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused) {
-                    Toast.makeText(internship_form.this, "Form filled", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(internship_form.this, student_home.class));
-                    finish();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(internship_form.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            documentReference.set(user, SetOptions.merge()).addOnSuccessListener(unused -> {
+                Toast.makeText(internship_form.this, "Form filled", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(internship_form.this, student_home.class));
+                finish();
+            }).addOnFailureListener(e -> Toast.makeText(internship_form.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show());
 
 
         }
