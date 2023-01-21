@@ -11,18 +11,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class companyAdapter extends RecyclerView.Adapter<companyAdapter.myViewHolder> {
 
-    Context context;
-    ArrayList<recycle_getter_setter> companyArrayList;
-    FirebaseFirestore fstore = FirebaseFirestore.getInstance();
+    final Context context;
+    final ArrayList<recycle_getter_setter> companyArrayList;
+    final FirebaseFirestore fstore = FirebaseFirestore.getInstance();
 
     public companyAdapter(Context context, ArrayList<recycle_getter_setter> companyArrayList) {
         this.context = context;
@@ -35,7 +34,7 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.myViewHo
 
         View v = LayoutInflater.from(context).inflate(R.layout.company_list_item, parent,false);
 
-        return new companyAdapter.myViewHolder(v);
+        return new myViewHolder(v);
     }
 
     @Override
@@ -54,9 +53,13 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.myViewHo
         return companyArrayList.size();
     }
 
-    public class myViewHolder extends RecyclerView.ViewHolder {
+    public static class myViewHolder extends RecyclerView.ViewHolder {
 
-        MaterialTextView Cname, subject, Caddress, Cmobile, Cemail;
+        final MaterialTextView Cname;
+        final MaterialTextView subject;
+        final MaterialTextView Caddress;
+        final MaterialTextView Cmobile;
+        final MaterialTextView Cemail;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,14 +87,11 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.myViewHo
 
     public void deleteData(int position) {
         recycle_getter_setter item = companyArrayList.get(position);
-        fstore.collection("Companies").document(item.getid()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(context, "Company Deleted!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "Error:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
+        fstore.collection("Companies").document(item.getid()).delete().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Toast.makeText(context, "Company Deleted!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, "Error:" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -23,14 +23,15 @@
                 android:id="@+id/img"
                 android:layout_width="84sp"
                 android:layout_height="84sp"
-                android:src="@drawable/ic_baseline_domain_24" />
+                android:src="@drawable/ic_baseline_domain_24"
+                android:contentDescription="@string/todo" />
 
             <TextView
                 android:id="@+id/cName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/img"
+                android:layout_toEndOf="@id/img"
                 android:text="@string/name"
                 android:textSize="34sp"
                 android:textStyle="bold" />

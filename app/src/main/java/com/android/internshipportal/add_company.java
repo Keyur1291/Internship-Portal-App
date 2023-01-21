@@ -1,27 +1,20 @@
 package com.android.internshipportal;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,9 +70,7 @@ public class add_company extends AppCompatActivity {
         autoCompleteTextView.setThreshold(1);
 
         apply = findViewById(R.id.applyBtn);
-        apply.setOnClickListener(v -> {
-            applyInternship(fieldError);
-        });
+        apply.setOnClickListener(v -> applyInternship(fieldError));
 
     }
 
@@ -114,19 +105,11 @@ public class add_company extends AppCompatActivity {
             company.put("Caddress", Caddress);
             company.put("Cmobile", Cmobile);
             company.put("Cemail", Cemail);
-            fStore.collection("Companies").add(company).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentReference> task) {
-                    Toast.makeText(add_company.this, "Company Added", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(add_company.this, admin_home.class));
-                    finish();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(add_company.this, "Error;" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            fStore.collection("Companies").add(company).addOnCompleteListener(task -> {
+                Toast.makeText(add_company.this, "Company Added", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(add_company.this, admin_home.class));
+                finish();
+            }).addOnFailureListener(e -> Toast.makeText(add_company.this, "Error;" + e.getMessage(), Toast.LENGTH_SHORT).show());
         }
 
     }
