@@ -1,6 +1,5 @@
 package com.android.internshipportal;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
@@ -11,10 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -85,10 +80,10 @@ public class edit_faculty extends AppCompatActivity {
             udepartment = bundle.getString("udepartment");
             umobile = bundle.getString("umobile");
             uemail = bundle.getString("uemail");
-            regName.getEditText().setText(uname);
-            regDepartment.getEditText().setText(udepartment);
-            regMobile.getEditText().setText(umobile);
-            regEmail.getEditText().setText(uemail);
+            Objects.requireNonNull(regName.getEditText()).setText(uname);
+            Objects.requireNonNull(regDepartment.getEditText()).setText(udepartment);
+            Objects.requireNonNull(regMobile.getEditText()).setText(umobile);
+            Objects.requireNonNull(regEmail.getEditText()).setText(uemail);
         }
 
         save = findViewById(R.id.saveprofilebtn);
@@ -131,18 +126,15 @@ public class edit_faculty extends AppCompatActivity {
                     "name", name,
                     "department", department,
                     "mobile", mobile,
-                    "email", email).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(edit_faculty.this, "Profile Updated", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(edit_faculty.this, faculty_list.class));
-                        finish();
-                    } else {
-                        Toast.makeText(edit_faculty.this, "Error:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+                    "email", email).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(edit_faculty.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(edit_faculty.this, faculty_list.class));
+                            finish();
+                        } else {
+                            Toast.makeText(edit_faculty.this, "Error:" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
     }
 
@@ -176,19 +168,11 @@ public class edit_faculty extends AppCompatActivity {
             user.put("mobile", mobile);
             user.put("email", email);
 
-            documentReference.set(user, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused) {
-                    Toast.makeText(edit_faculty.this, "Student Profile Updated", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(edit_faculty.this, admin_home.class));
-                    finish();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(edit_faculty.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            documentReference.set(user, SetOptions.merge()).addOnSuccessListener(unused -> {
+                Toast.makeText(edit_faculty.this, "Student Profile Updated", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(edit_faculty.this, admin_home.class));
+                finish();
+            }).addOnFailureListener(e -> Toast.makeText(edit_faculty.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show());
 
         }
 

@@ -1,31 +1,21 @@
 package com.android.internshipportal;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -36,10 +26,9 @@ import java.util.Objects;
 
 public class edit_profile extends AppCompatActivity {
 
-    public static final String TAG = "TAG";
-    MaterialButton save, delete;
+    MaterialButton save;
     MaterialToolbar toolbar;
-    TextInputLayout regDepartment, regName, regMobile, regEn_no, regEmail;
+    TextInputLayout regDepartment, regName, regMobile, regEmail;
     AutoCompleteTextView autoCompleteTextView;
     ArrayList<String> arrayList;
     ArrayAdapter<String> arrayAdapter;
@@ -65,7 +54,6 @@ public class edit_profile extends AppCompatActivity {
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         fStore = FirebaseFirestore.getInstance();
         regName = findViewById(R.id.reg_name);
-        regEn_no = findViewById(R.id.reg_en_no);
         regDepartment = findViewById(R.id.dmenu);
         regMobile = findViewById(R.id.reg_mobile_no);
         regEmail = findViewById(R.id.reg_email);
@@ -85,34 +73,22 @@ public class edit_profile extends AppCompatActivity {
         autoCompleteTextView.setThreshold(1);
 
         save = findViewById(R.id.saveprofilebtn);
-        save.setOnClickListener(v -> {
-            editUser(fieldError);
-        });
+        save.setOnClickListener(v -> editUser(fieldError));
 
         DocumentReference documentReference = fStore.collection("Users").document(userID);
-        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    regName.getEditText().setText(documentSnapshot.getString("name"));
-                    regDepartment.getEditText().setText(documentSnapshot.getString("department"));
-                    regEn_no.getEditText().setText(documentSnapshot.getString("enrollment"));
-                    regMobile.getEditText().setText(documentSnapshot.getString("mobile"));
-                    regEmail.getEditText().setText(documentSnapshot.getString("email"));
-                }
+        documentReference.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                Objects.requireNonNull(regName.getEditText()).setText(documentSnapshot.getString("name"));
+                Objects.requireNonNull(regDepartment.getEditText()).setText(documentSnapshot.getString("department"));
+                Objects.requireNonNull(regMobile.getEditText()).setText(documentSnapshot.getString("mobile"));
+                Objects.requireNonNull(regEmail.getEditText()).setText(documentSnapshot.getString("email"));
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(edit_profile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        }).addOnFailureListener(e -> Toast.makeText(edit_profile.this, e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void editUser(CharSequence fieldError) {
 
         String name = Objects.requireNonNull(regName.getEditText()).getText().toString();
-        String enrollment = Objects.requireNonNull(regEn_no.getEditText()).getText().toString();
         String department = Objects.requireNonNull(regDepartment.getEditText()).getText().toString();
         String mobile = Objects.requireNonNull(regMobile.getEditText()).getText().toString();
         String email = Objects.requireNonNull(regEmail.getEditText()).getText().toString();
@@ -120,12 +96,6 @@ public class edit_profile extends AppCompatActivity {
         if (TextUtils.isEmpty(name)) {
             regName.setError(fieldError);
             regName.requestFocus();
-        } else if (TextUtils.isEmpty(enrollment)) {
-            regEn_no.setError(fieldError);
-            regEn_no.requestFocus();
-        } else if (enrollment.length() > 15) {
-            regEn_no.setError("Enrollment number should not be longer than 15 digits");
-            regEn_no.requestFocus();
         } else if (TextUtils.isEmpty(department)) {
             regDepartment.setError(fieldError);
             regDepartment.requestFocus();
@@ -142,24 +112,15 @@ public class edit_profile extends AppCompatActivity {
             DocumentReference documentReference = fStore.collection("Users").document(userID);
             Map<String, Object> user = new HashMap<>();
             user.put("name", name);
-            user.put("enrollment", enrollment);
             user.put("department", department);
             user.put("mobile", mobile);
             user.put("email", email);
 
-            documentReference.set(user, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused) {
-                    Toast.makeText(edit_profile.this, "Profile Updated", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(edit_profile.this, profile.class));
-                    finish();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(edit_profile.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            documentReference.set(user, SetOptions.merge()).addOnSuccessListener(unused -> {
+                Toast.makeText(edit_profile.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(edit_profile.this, profile.class));
+                finish();
+            }).addOnFailureListener(e -> Toast.makeText(edit_profile.this, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show());
 
         }
 

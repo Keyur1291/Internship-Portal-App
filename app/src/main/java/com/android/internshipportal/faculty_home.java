@@ -11,11 +11,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,9 +42,15 @@ public class faculty_home extends AppCompatActivity implements NavigationView.On
 
         logout = findViewById(R.id.logOut);
         logout.setOnClickListener(View -> {
-            mAuth.signOut();
-            Toast.makeText(faculty_home.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(faculty_home.this, login.class));
+            MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(faculty_home.this, R.style.ThemeOverlay_App_MaterialAlertDialog);
+            dialogBuilder.setTitle("Logout");
+            dialogBuilder.setMessage("Are you sure want to Logout");
+            dialogBuilder.setPositiveButton("Yes", (dialog, which) -> {
+                mAuth.signOut();
+                Toast.makeText(faculty_home.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(faculty_home.this, login.class));
+            }).setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+            dialogBuilder.show();
         });
 
         toolbar = findViewById(R.id.appbar);

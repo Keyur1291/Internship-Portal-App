@@ -1,6 +1,5 @@
 package com.android.internshipportal;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,11 +11,8 @@ import android.util.Log;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -25,8 +21,8 @@ public class noc_requests extends AppCompatActivity {
 
     FirebaseFirestore fstore;
     RecyclerView recyclerView;
-    ArrayList<recycle_getter_setter> userArrayList;
-    userAdapter userAdapter;
+    ArrayList<recycle_getter_setter> nocArrayList;
+    nocAdapter nocAdapter;
     ProgressDialog progressDialog;
     MaterialToolbar toolbar;
 
@@ -50,10 +46,10 @@ public class noc_requests extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         fstore = FirebaseFirestore.getInstance();
-        userArrayList = new ArrayList<recycle_getter_setter>();
-        userAdapter = new userAdapter(noc_requests.this, userArrayList);
+        nocArrayList = new ArrayList<>();
+        nocAdapter = new nocAdapter(noc_requests.this, nocArrayList);
 
-        recyclerView.setAdapter(userAdapter);
+        recyclerView.setAdapter(nocAdapter);
 
         fetchData();
 
@@ -61,25 +57,22 @@ public class noc_requests extends AppCompatActivity {
 
     private void fetchData() {
 
-        fstore.collection("Users").orderBy("formFilled", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+        fstore.collection("Users").orderBy("formFilled", Query.Direction.ASCENDING).addSnapshotListener((value, error) -> {
 
-                if (error != null) {
-                    if (progressDialog.isShowing())
-                        progressDialog.dismiss();
-                    Log.e("Firestore Error", error.getMessage());
-                    return;
-                }
+            if (error != null) {
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
+                Log.e("Firestore Error", error.getMessage());
+                return;
+            }
 
-                for (DocumentChange dc : value.getDocumentChanges()) {
-                    if (dc.getType() == DocumentChange.Type.ADDED) {
-                        userArrayList.add(dc.getDocument().toObject(recycle_getter_setter.class));
-                    }
-                    userAdapter.notifyDataSetChanged();
-                    if (progressDialog.isShowing())
-                        progressDialog.dismiss();
+            for (DocumentChange dc : Objects.requireNonNull(value).getDocumentChanges()) {
+                if (dc.getType() == DocumentChange.Type.ADDED) {
+                    nocArrayList.add(dc.getDocument().toObject(recycle_getter_setter.class));
                 }
+                nocAdapter.notifyDataSetChanged();
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
             }
         });
 

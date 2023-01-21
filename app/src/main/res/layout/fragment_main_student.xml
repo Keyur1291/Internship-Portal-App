@@ -96,7 +96,8 @@
                 android:text="@string/company_details"
                 android:textAlignment="viewStart"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 
@@ -128,7 +129,8 @@
                 android:text="@string/previous_company_details"
                 android:textAlignment="viewStart"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 
