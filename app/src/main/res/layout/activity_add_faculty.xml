@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            style="@style/Widget.Material3.CollapsingToolbar.Large"
+            style="@style/Widget.Material3.CollapsingToolbar.Medium"
             android:layout_width="match_parent"
             android:layout_height="?attr/collapsingToolbarLayoutLargeSize">
 
